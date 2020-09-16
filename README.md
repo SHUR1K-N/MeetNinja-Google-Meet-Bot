@@ -1,7 +1,7 @@
 # MeetNinja: The Google Meet Bot
 
 ## Description
-A super dope tool that attends your Google Meet(s) for you. Flawlessly handles multiple Meet sessions, breaks, and scheduling while *you* embrace sweet, sweet slumber! MeetNinja is also equipped with clear & concise activity logging (verbose), along with timestamps of the joining & ending times for each Meet session (to assure you—upon your return—that your Meets were *indeed* successfully attended).
+A super dope tool that attends your Google Meet(s) for you. Flawlessly handles multiple Meet sessions, breaks, and scheduling while *you* embrace sweet, sweet slumber! MeetNinja also disables your Meet camera & microphone, and is equipped with clear & concise activity logging (verbose), along with timestamps of the joining & ending times for each Meet session (to assure you—upon your return—that your Meets were *indeed* successfully attended).
 
 This project was created in Python, for the fellow comrades and homies.
 
