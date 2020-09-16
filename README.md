@@ -10,7 +10,7 @@ This project was created in Python, for the fellow comrades and homies.
 2. PIP-install all the packages mentioned under the last subheading on this page
 
 3. Do not run MeetNinja.py just yet. First, open it using any editor, and substitute your inputs (Google Meet URLs, their start times, duration of all Meets, Google username, and password) into the dummy values in the following section of the code:
-```python
+```
                                               Meets                             Yr    M D Hr min sec
 MEETS = {"https://meet.google.com/meetURL1": "2020 9 16 14 12 0",
 				   "https://meet.google.com/meetURL2": "2020 9 16 14 14 0",
@@ -18,7 +18,8 @@ MEETS = {"https://meet.google.com/meetURL1": "2020 9 16 14 12 0",
         		 }
 DURATION = 60 # Duration of each Meet in minutes
 USERNAME = "emailaddress@gmail.com"
-PASSWORD = "password"```
+PASSWORD = "password"
+```
 4. Save your changes, and run the program (either by double-clicking MeetNinja.py, or executing it via a terminal window if you are feeling particularly geeky today)
 
 5. Take the chillest of pills (figuratively) and abandon all your worries; MeetNinja's got your back
