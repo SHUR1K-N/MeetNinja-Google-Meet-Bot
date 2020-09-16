@@ -13,12 +13,12 @@ joinButton = "Buttons/joinButton.png"
 endButton = "Buttons/endButton.png"
 
 ##################################################################
-                       # Meets                 Yr  M  D Hr mn sc
-MEETS = {"https://meet.google.com/meetURL1": "2020 9 17 10 02 0",
+#                        Meets                 Yr  M D  Hr min sec
+MEETS = {"https://meet.google.com/meetURL1": "2020 9 16 14 14 0",
          "https://meet.google.com/meetURL2": "2020 9 16 14 14 0",
          "https://meet.google.com/meetURL3": "2020 9 16 14 16 0",
          }
-DURATION = 60   # Duration of each Meet in minutes
+DURATION = 60 # Duration of each Meet in minutes
 USERNAME = "emailaddress@gmail.com"
 PASSWORD = "passw0rd"
 ##################################################################
@@ -138,10 +138,12 @@ if __name__ == "__main__":
     try:
         DURATION *= 60
         driver = initBrowser()
+        print("Waiting until Meet start time...", end="")
         for meetIndex, (URL, startTime) in enumerate(MEETS.items(), start=1):
             startTime = list(map(int, startTime.split()))
             pause.until(datetime(*startTime))
             if (meetIndex <= 1):
+                print(colored(" Started!", "green"))
                 login()
             attendMeet()
             time.sleep(DURATION)
