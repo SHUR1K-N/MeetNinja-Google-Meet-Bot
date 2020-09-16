@@ -30,11 +30,7 @@ You would be surprised by how common a feature WoL is in most modern *and* semi-
 I highly recommend [**this Android app**](https://play.google.com/store/apps/details?id=co.uk.mrwebb.wakeonlan "this Android app") (ad-free, free, light, simple) for sending WoL packets to your computer system over the air and triggering a wake-up from the Hibernation / Sleep state without even touching the system (ironic how you would wake your system up so you could sleep, hah!).
 
 ### Chrome Remote Desktop / Microsoft's RD Client
-
 You may also need or use the above remote desktop client(s) if you need to mid-sleep-check on your progress or if your computer system has a login password you may need to enter remotely after a Wake-on-LAN.
-
-### General
-You may just leave the tool running before sending your system to Hibernate / Sleep so just a simple Wake-on-LAN and/or login before the Meet's start time the world is your playground!
 
 ## Note
 1. Make sure you do not close the generated Chrome window until all your Meets are attended
