@@ -8,6 +8,9 @@ import colorama; import re
 colorama.init()
 
 CHROMEDRIVER = "chromedriver.exe"
+xButton = "Buttons/xButton.png"
+joinButton = "Buttons/joinButton.png"
+endButton = "Buttons/endButton.png"
 
 ##################################################################
                        # Meets                 Yr  M  D Hr mn sc
@@ -88,13 +91,13 @@ def attendMeet():
     time.sleep(3)
 
     try:
-        buttonX, buttonY = pyautogui.locateCenterOnScreen("xButton.png")
+        buttonX, buttonY = pyautogui.locateCenterOnScreen(xButton)
         pyautogui.click(buttonX, buttonY)
         time.sleep(2)
     except:
         pass
 
-    buttonX, buttonY = pyautogui.locateCenterOnScreen("joinButton.png")
+    buttonX, buttonY = pyautogui.locateCenterOnScreen(joinButton)
     pyautogui.click(buttonX, buttonY)
     print(colored(" Success!", "green"))
     time.sleep(1.5)
@@ -102,7 +105,7 @@ def attendMeet():
 
 
 def endMeet():
-    buttonX, buttonY = pyautogui.locateCenterOnScreen("endButton.png")
+    buttonX, buttonY = pyautogui.locateCenterOnScreen(endButton)
     pyautogui.click(buttonX, buttonY)
     print(colored(f"\nSuccessfully ended Google Meet #{meetIndex} @{timeStamp()}", "red"), end="")
 
