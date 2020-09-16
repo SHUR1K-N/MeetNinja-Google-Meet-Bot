@@ -11,11 +11,11 @@ This project was created in Python, for the fellow comrades and homies.
 
 3. Do not run MeetNinja.py just yet. First, open it using any editor, and substitute your inputs (Google Meet URLs, their start times, duration of all Meets, Google username, and password) into the dummy values in the following section of the code:
 ```
-                                              Meets                             Yr    M D Hr min sec
+                      Meets                    Yr  M D Hr min sec
 MEETS = {"https://meet.google.com/meetURL1": "2020 9 16 14 12 0",
-				   "https://meet.google.com/meetURL2": "2020 9 16 14 14 0",
-         		  "https://meet.google.com/meetURL3": "2020 9 16 14 16 0",
-        		 }
+	 "https://meet.google.com/meetURL2": "2020 9 16 14 14 0",
+         "https://meet.google.com/meetURL3": "2020 9 16 14 16 0",
+         }
 DURATION = 60 # Duration of each Meet in minutes
 USERNAME = "emailaddress@gmail.com"
 PASSWORD = "password"
