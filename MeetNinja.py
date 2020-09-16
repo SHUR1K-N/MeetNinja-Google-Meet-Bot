@@ -9,16 +9,16 @@ colorama.init()
 
 CHROMEDRIVER = "chromedriver.exe"
 
-###########################################################################
-#                        Meets                 Yr  M D  Hr min sec
-MEETS = {"https://meet.google.com/meetURL1": "2020 9 16 14 12 0",
+##################################################################
+                       # Meets                 Yr  M  D Hr mn sc
+MEETS = {"https://meet.google.com/meetURL1": "2020 9 17 10 02 0",
          "https://meet.google.com/meetURL2": "2020 9 16 14 14 0",
          "https://meet.google.com/meetURL3": "2020 9 16 14 16 0",
          }
-DURATION = 60 # Duration of each Meet in minutes
+DURATION = 60   # Duration of each Meet in minutes
 USERNAME = "emailaddress@gmail.com"
-PASSWORD = "password"
-###########################################################################
+PASSWORD = "passw0rd"
+##################################################################
 
 BANNER1 = colored('''
                      ███▄ ▄███▓▓█████ ▓█████▄▄▄█████▓ ███▄    █  ██▓ ███▄    █  ▄▄▄██▀▀▀▄▄▄
