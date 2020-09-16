@@ -7,6 +7,7 @@ This project was created in Python, for the fellow comrades and homies.
 
 ## Usage
 1. Download the contents of this repository as a .ZIP (all files are required), and extract them
+
 2. PIP-install all the packages mentioned under the [last subheading](https://github.com/SHUR1K-N/MeetNinja-Google-Meet-Bot#dependencies-to-pip-install "last subheading") on this page
 
 3. Do not run MeetNinja.py just yet. First, open it using any editor, and substitute your inputs (Google Meet URLs, their start times, duration of all Meets, Google username, and password) into the dummy values in the following section of the code (highlighted):
@@ -38,7 +39,8 @@ You may just leave the tool running before sending your system to Hibernate / Sl
 ## Note
 1. Make sure you do not close the generated Chrome window until all your Meets are attended
 
-2. Make sure you do not input the start time with leading zeros like "08 30" (Eight Thirty AM). The correct format is simply "8 30". This, however, does not apply to zero by itself, so "8 0" (Eight AM) would work just fine.
+2. Make sure you do not input the start time with leading zeros like "08 30" (Eight Thirty AM). The correct format is simply "8 30". This, however, does not apply to zero by itself, so "8 0" (Eight AM) would work just fine
+
 3. You may abort the process at any stage or time by pressing CTRL + C from within the MeetNinja console / terminal window
 
 ## Dependencies to PIP-Install
