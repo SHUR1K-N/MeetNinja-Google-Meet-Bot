@@ -9,7 +9,7 @@ This project was created in Python, for the fellow comrades and homies.
 1. Download the contents of this repository as a .ZIP (all files are required), and extract them
 2. PIP-install all the packages mentioned under the last subheading on this page
 
-3. Do not run MeetNinja.py just yet. First, open it using any editor, and substitute your inputs (Google Meet URLs, their start times, duration of all Meets, Google username, and password) into the dummy values in the following section of the code:
+3. Do not run MeetNinja.py just yet. First, open it using any editor, and substitute your inputs (Google Meet URLs, their start times, duration of all Meets, Google username, and password) into the dummy values in the following section of the code (highlighted):
 
 ![Example](https://github.com/SHUR1K-N/MeetNinja-Google-Meet-Bot/blob/master/Images/Substitute.png "Example")
 
