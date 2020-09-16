@@ -7,7 +7,7 @@ This project was created in Python, for the fellow comrades and homies.
 
 ## Usage
 1. Download the contents of this repository as a .ZIP (all files are required), and extract them
-2. PIP-install all the packages mentioned under the last subheading on this page
+2. PIP-install all the packages mentioned under the [last subheading](https://github.com/SHUR1K-N/MeetNinja-Google-Meet-Bot#dependencies-to-pip-install "last subheading") on this page
 
 3. Do not run MeetNinja.py just yet. First, open it using any editor, and substitute your inputs (Google Meet URLs, their start times, duration of all Meets, Google username, and password) into the dummy values in the following section of the code (highlighted):
 
@@ -21,18 +21,18 @@ This project was created in Python, for the fellow comrades and homies.
 Upon execution, MeetNinja generates a new Google Chrome window in Developer Mode, and this new window stays idle until it is time to join your first Meet (according to your schedule). Once it is time, MeetNinja automatically logs you into your Google account, navigates to the first Meet URL, disables your camera & microphone, joins the Meet session, and then waits until the duration specified (60 minutes by default) before ending the call and repeating the same for the *next* Meet session (whenever it may be) and so on, until your schedule has exhausted *(phew)* — all this with just a single (double) click!
 
 ## Tip(s) for CyberJedi-like Usage
-### Wake-on-LAN
+#### Wake-on-LAN
 You may use MeetNinja paired with Wake-on-LAN / Magic Packet (if your motherboard and network adapter support it) for the optimal, ultimate "Away From Keyboard" automation experience.
 
 You would be surprised by how common a feature WoL is in most modern *and* semi-modern systems. Hence, definitely *do* check it out. It is super cool, convenient, easy, helpful, and—importantly—native.
 
 I highly recommend [**this Android app**](https://play.google.com/store/apps/details?id=co.uk.mrwebb.wakeonlan "this Android app") (ad-free, free, light, simple) for sending WoL packets to your computer system over the air and triggering a wake-up from the Hibernation / Sleep state without even touching the system (ironic how you would wake your system up so you could sleep, hah!).
 
-### Chrome Remote Desktop / Microsoft's RD Client
+#### Chrome Remote Desktop / Microsoft's RD Client
 
 You may also need or use the above remote desktop client(s) if you need to mid-sleep-check on your progress or if your computer system has a login password you may need to enter remotely after a Wake-on-LAN.
 
-### General
+#### General
 You may just leave the tool running before sending your system to Hibernate / Sleep so just a simple Wake-on-LAN and/or login before the Meet's start time the world is your playground!
 
 ## Note
