@@ -11,6 +11,8 @@ CHROMEDRIVER = "chromedriver.exe"
 xButton = "Buttons/xButton.png"
 joinButton = "Buttons/joinButton.png"
 endButton = "Buttons/endButton.png"
+dismissButton = "Buttons/dismissButton.png"
+pyautogui.FAILSAFE = False
 
 ##################################################################
 #                        Meets                 Yr  M D  Hr min sec
@@ -88,10 +90,16 @@ def attendMeet():
     driver.get(URL)
     print(colored(" Success!", "green"))
     print(f"Entering Google Meet #{meetIndex}... ", end="")
-    time.sleep(3)
+    time.sleep(2)
 
     try:
         buttonX, buttonY = pyautogui.locateCenterOnScreen(xButton)
+        pyautogui.click(buttonX, buttonY)
+        time.sleep(2)
+    except:
+        pass
+    try:
+        buttonX, buttonY = pyautogui.locateCenterOnScreen(dismissButton)
         pyautogui.click(buttonX, buttonY)
         time.sleep(2)
     except:
@@ -119,6 +127,7 @@ def genericError():
     print("4. Make sure the small \"time.sleep\" delays in the functions are comfortable for your internet speed")
     print("\nPress Enter to exit.")
     input()
+    exit()
 
 
 def clrscr():
