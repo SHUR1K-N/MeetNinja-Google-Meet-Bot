@@ -42,7 +42,8 @@ You may also need or use the above remote desktop client(s) if you need to mid-s
 ## Dependencies to PIP-Install
 - **selenium** (for Chrome-based automation)
 - **pyautogui**  (for locating buttons and sending clicks)
-- **datetime** (for scheduling)
+- **datetime** (for scheduling & timestamps)
+- **pause** (for scheduling)
 - **colorama** (for colors)
 - **termcolor** (for colors)
 
