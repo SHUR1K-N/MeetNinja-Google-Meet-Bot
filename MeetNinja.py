@@ -1,9 +1,9 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-import time; import pause; import pyautogui
-import os; from datetime import datetime
-from termcolor import colored
-import colorama; import re
+import colorama; from termcolor import colored
+import time; from datetime import datetime
+import pause; import pyautogui
+import os; import re
 
 colorama.init()
 
@@ -89,17 +89,11 @@ def attendMeet():
     print(f"\n\nNavigating to Google Meet #{meetIndex}...", end="")
     driver.get(URL)
     print(colored(" Success!", "green"))
-    print(f"Entering Google Meet #{meetIndex}... ", end="")
-    time.sleep(2)
+    print(f"Entering Google Meet #{meetIndex}...", end="")
+    time.sleep(3)
 
     try:
         buttonX, buttonY = pyautogui.locateCenterOnScreen(xButton)
-        pyautogui.click(buttonX, buttonY)
-        time.sleep(2)
-    except:
-        pass
-    try:
-        buttonX, buttonY = pyautogui.locateCenterOnScreen(dismissButton)
         pyautogui.click(buttonX, buttonY)
         time.sleep(2)
     except:
@@ -119,15 +113,19 @@ def endMeet():
 
 
 def genericError():
-    clrscr()
-    print("\nSomething went wrong. Possible fixes:\n")
-    print("1. Check your inputs and run MeetNinja again")
+    # clrscr()
+    print("\n\nSomething went wrong. Possible fixes:\n")
+    print("1. Check your inputs and run MeetNinja again (make sure there are no leading zeros in the Meet start times)")
     print("2. Make sure the developer browser is always open while MeetNinja is working")
     print("3. Make sure \"chromedriver.exe\" is of the latest stable build (https://chromedriver.chromium.org/)")
     print("4. Make sure the small \"time.sleep\" delays in the functions are comfortable for your internet speed")
+    print("5. Make sure your internet connection is stable")
     print("\nPress Enter to exit.")
     input()
-    exit()
+    try:
+        driver.quit()
+    except:
+        pass
 
 
 def clrscr():
@@ -157,13 +155,16 @@ if __name__ == "__main__":
             attendMeet()
             time.sleep(DURATION)
             endMeet()
+        print("\n\nAll Meets completed successfully.")
+        print("Press Enter to exit.")
+        input()
+        driver.quit()
+
     except KeyboardInterrupt:
         clrscr()
         print("\nCTRL ^C\n\nThrew a wrench in the works.")
         print("Press Enter to exit.")
         input()
+        driver.quit()
     except:
         genericError()
-    print("\n\nAll Meets completed successfully.")
-    print("Press Enter to exit.")
-    input()
