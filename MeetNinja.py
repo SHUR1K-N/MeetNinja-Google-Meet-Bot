@@ -2,17 +2,11 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import colorama; from termcolor import colored
 import time; from datetime import datetime
-import pause; import pyautogui
-import os; import re
+import pause; import os; import re
 
 colorama.init()
 
 CHROMEDRIVER = "chromedriver.exe"
-xButton = "Buttons/xButton.png"
-joinButton = "Buttons/joinButton.png"
-endButton = "Buttons/endButton.png"
-dismissButton = "Buttons/dismissButton.png"
-pyautogui.FAILSAFE = False
 
 ##################################################################
 #                        Meets                 Yr  M D  Hr min sec
@@ -24,6 +18,14 @@ DURATION = 60 # Duration of each Meet in minutes
 USERNAME = "emailaddress@gmail.com"
 PASSWORD = "passw0rd"
 ##################################################################
+
+# All interactive field / button paths
+usernameFieldPath = "/html/body/div[1]/div[1]/div[2]/div/div[2]/div/div/div[2]/div/div[1]/div/form/span/section/div/div/div[1]/div/div[1]/div/div[1]/input"
+nextButtonPath = "/html/body/div[1]/div[1]/div[2]/div/div[2]/div/div/div[2]/div/div[2]/div/div[1]/div/div/button/div[2]"
+passwordFieldPath = "/html/body/div[1]/div[1]/div[2]/div/div[2]/div/div/div[2]/div/div[1]/div/form/span/section/div/div/div[1]/div[1]/div/div/div/div/div[1]/div/div[1]/input"
+xButtonPath = "#yDmH0d > div.llhEMd.iWO5td > div > div.g3VIld.B2Jb7d.Up8vH.hFEqNb.J9Nfi.iWO5td > div.R6Lfte.es33Kc.TNczib.X1clqd > div.bZWIgd > div > span > span > svg"
+joinButtonPath = "/html/body/div[1]/c-wiz/div/div/div[5]/div[3]/div/div[2]/div/div/div[2]/div/div[2]/div/div[1]/div[1]/span/span"
+endButtonPath = "/html/body/div[1]/c-wiz/div[1]/div/div[5]/div[3]/div[9]/div[2]/div[2]/div"
 
 BANNER1 = colored('''
                      ███▄ ▄███▓▓█████ ▓█████▄▄▄█████▓ ███▄    █  ██▓ ███▄    █  ▄▄▄██▀▀▀▄▄▄
@@ -69,18 +71,18 @@ def login():
     print("Logging into Google account...", end="")
     driver.get('https://accounts.google.com/signin')
 
-    username = driver.find_element_by_id("identifierId")
+    username = driver.find_element_by_xpath(usernameFieldPath)
     username.send_keys(USERNAME)
 
-    nextButton = driver.find_element_by_id("identifierNext")
+    nextButton = driver.find_element_by_xpath(nextButtonPath)
     nextButton.click()
     time.sleep(3)
 
-    password = driver.find_element_by_xpath("//input[@class='whsOnd zHQkBf']")
+    password = driver.find_element_by_xpath(passwordFieldPath)
     password.send_keys(PASSWORD)
 
-    signInButton = driver.find_element_by_id("passwordNext")
-    signInButton.click()
+    nextButton = driver.find_element_by_xpath(nextButtonPath)
+    nextButton.click()
     time.sleep(3)
     print(colored(" Success!", "green"))
 
@@ -93,22 +95,22 @@ def attendMeet():
     time.sleep(3)
 
     try:
-        buttonX, buttonY = pyautogui.locateCenterOnScreen(xButton)
-        pyautogui.click(buttonX, buttonY)
-        time.sleep(2)
+        xButton = driver.find_element_by_css_selector(xButtonPath)
+        xButton.click()
+        time.sleep(1)
     except:
         pass
 
-    buttonX, buttonY = pyautogui.locateCenterOnScreen(joinButton)
-    pyautogui.click(buttonX, buttonY)
+    joinButton = driver.find_element_by_xpath(joinButtonPath)
+    joinButton.click()
     print(colored(" Success!", "green"))
-    time.sleep(1.5)
+    time.sleep(1)
     print(colored(f"Now attending Google Meet #{meetIndex} @{timeStamp()}", "green"), end="")
 
 
 def endMeet():
-    buttonX, buttonY = pyautogui.locateCenterOnScreen(endButton)
-    pyautogui.click(buttonX, buttonY)
+    endButton = driver.find_element_by_xpath(endButtonPath)
+    endButton.click()
     print(colored(f"\nSuccessfully ended Google Meet #{meetIndex} @{timeStamp()}", "red"), end="")
 
 
