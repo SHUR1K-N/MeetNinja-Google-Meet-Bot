@@ -37,7 +37,7 @@ You may also need or use the above remote desktop client(s) if you need to mid-s
 ## Note
 1. Make sure you do not close the generated Chrome window until all your Meets are attended
 
-2. Make sure you do not input the start time with leading zeros like "08 30" (Eight Thirty AM). The correct format is simply "8 30". This, however, does not apply to zero by itself, so "8 0" (Eight AM) would work just fine
+2. Make sure you do not input the start time with leading zeros like `08 30` (Eight Thirty AM). The correct format is simply `8 30`. This, however, does not apply to zero by itself, so `8 0` (Eight AM) would work just fine
 
 3. You may abort the process at any stage or time by pressing CTRL + C from within the MeetNinja console / terminal window
 
