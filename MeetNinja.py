@@ -117,7 +117,7 @@ def genericError():
     print(colored(" Failed!", "red"), end="")
     print("\n\nPossible fixes:\n")
     print("1. Check your inputs and run MeetNinja again (make sure there are no leading zeros in the Meet start times)")
-    print("2. Make sure the developer browser is always open while MeetNinja is working")
+    print("2. Make sure the developer browser is always open and visible (on top) while MeetNinja is working")
     print("3. Make sure \"chromedriver.exe\" is of the latest stable build (https://chromedriver.chromium.org/)")
     print("4. Make sure the small \"time.sleep\" delays in the functions are comfortable for your internet speed")
     print("5. Make sure your internet connection is stable throughout the process")
