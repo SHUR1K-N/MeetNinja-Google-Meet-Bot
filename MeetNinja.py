@@ -23,6 +23,7 @@ PASSWORD = "passw0rd"
 usernameFieldPath = "/html/body/div[1]/div[1]/div[2]/div/div[2]/div/div/div[2]/div/div[1]/div/form/span/section/div/div/div[1]/div/div[1]/div/div[1]/input"
 nextButtonPath = "/html/body/div[1]/div[1]/div[2]/div/div[2]/div/div/div[2]/div/div[2]/div/div[1]/div/div/button/div[2]"
 passwordFieldPath = "/html/body/div[1]/div[1]/div[2]/div/div[2]/div/div/div[2]/div/div[1]/div/form/span/section/div/div/div[1]/div[1]/div/div/div/div/div[1]/div/div[1]/input"
+dismissButtonPath = "/html/body/div[1]/div[3]/div/div[2]/div[3]/div/span/span"
 xButtonPath = "#yDmH0d > div.llhEMd.iWO5td > div > div.g3VIld.B2Jb7d.Up8vH.hFEqNb.J9Nfi.iWO5td > div.R6Lfte.es33Kc.TNczib.X1clqd > div.bZWIgd > div > span > span > svg"
 joinButtonPath = "/html/body/div[1]/c-wiz/div/div/div[5]/div[3]/div/div[2]/div/div/div[2]/div/div[2]/div/div[1]/div[1]/span/span"
 endButtonPath = "/html/body/div[1]/c-wiz/div[1]/div/div[5]/div[3]/div[9]/div[2]/div[2]/div"
@@ -96,6 +97,12 @@ def attendMeet():
     try:
         xButton = driver.find_element_by_css_selector(xButtonPath)
         xButton.click()
+        time.sleep(1)
+    except:
+        pass
+    try:
+        dismissButton = driver.find_element_by_xpath(dismissButtonPath)
+        dismissButton.click()
         time.sleep(1)
     except:
         pass
