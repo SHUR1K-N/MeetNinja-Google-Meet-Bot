@@ -8,7 +8,7 @@ A super dope tool that attends your Google Meet(s) for you. Flawlessly handles m
 This project was created in Python, for the fellow comrades and homies.
 
 ## Usage
-1. Clone / Download this repository or its content (mainly MeetNinja.py)
+1. Clone / Download this repository or its content (mainly **MeetNinja.py** and **chromedriver.exe**)
 
 2. PIP-install all the packages mentioned under the [last subheading](https://github.com/SHUR1K-N/MeetNinja-Google-Meet-Bot#dependencies-to-pip-install "last subheading") on this page
 
