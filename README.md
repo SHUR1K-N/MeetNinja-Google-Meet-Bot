@@ -5,7 +5,7 @@ A super dope tool that attends your Google Meet(s) for you on autopilot while yo
 
 <div align="center">
 <img src="https://github.com/SHUR1K-N/MeetNinja-Google-Meet-Bot/blob/master/Images/Example.png" >
-<p>Example Execution</p>
+<p>*Example Execution*</p>
 </div>
 
 This project was created in Python, for the fellow comrades and homies.
@@ -24,7 +24,10 @@ This project was created in Python, for the fellow comrades and homies.
 
 3. Do not run MeetNinja.py just yet. First, open it using any editor, and substitute your inputs (Google Meet URLs, their start times, duration of all Meets, Google username, and password) into the dummy values in the following section of the code (highlighted):
 
-![Example](https://github.com/SHUR1K-N/MeetNinja-Google-Meet-Bot/blob/master/Images/Substitute.png "Example")
+<div align="center">
+<img src="https://github.com/SHUR1K-N/MeetNinja-Google-Meet-Bot/blob/master/Images/Substitute.png" >
+<p>*Values to Substitute*</p>
+</div>
 
 4. Save your changes, and run the program (either by double-clicking MeetNinja.py, or executing it via a terminal window if you are feeling particularly geeky today)
 
