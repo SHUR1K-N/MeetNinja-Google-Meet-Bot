@@ -26,7 +26,7 @@ This project was created in Python, for the fellow comrades and homies.
 
 <div align="center">
 <img src="https://github.com/SHUR1K-N/MeetNinja-Google-Meet-Bot/blob/master/Images/Substitute.png" >
-<p>*Values to Substitute*</p>
+<p> *Values to Substitute* </p>
 </div>
 
 4. Save your changes, and run the program (either by double-clicking MeetNinja.py, or executing it via a terminal window if you are feeling particularly geeky today)
