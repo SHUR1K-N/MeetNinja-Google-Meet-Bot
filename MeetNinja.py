@@ -46,9 +46,8 @@ def printBanner():
 
 
 def timeStamp():
-    timeNow = datetime.now()
-    timeString = str(timeNow)
-    timeRegEx = re.findall(r"([0-9]+:[0-9]+:[0-9]+)", timeString)
+    timeNow = str(datetime.now())
+    timeRegEx = re.findall(r"([0-9]+:[0-9]+:[0-9]+)", timeNow)
     return(timeRegEx[0])
 
 
@@ -111,7 +110,7 @@ def attendMeet():
 def endMeet():
     endButton = driver.find_element_by_xpath(endButtonPath)
     endButton.click()
-    print(colored(f"\nSuccessfully ended Google Meet #{meetIndex} @{timeStamp()}", "red"), end="")
+    print(colored(f"\nSuccessfully ended Google Meet #{meetIndex} @{timeStamp()}\n", "red"), end="")
 
 
 def genericError():
@@ -148,12 +147,15 @@ if __name__ == "__main__":
     try:
         DURATION *= 60
         driver = initBrowser()
-        print("Waiting until Meet start time...", end="")
         for meetIndex, (URL, startTime) in enumerate(MEETS.items(), start=1):
             startTime = list(map(int, startTime.split()))
-            pause.until(datetime(*startTime))
             if (meetIndex <= 1):
-                print(colored(" Started!", "green"))
+                print(colored(f"Waiting until first Meet start time [{startTime[-3]:02}:{startTime[-2]:02}:{startTime[-1]:02}]...", "yellow"), end="")
+            else:
+                print(colored(f"\n\nWaiting until next Meet start time [{startTime[-3]:02}:{startTime[-2]:02}:{startTime[-1]:02}]...", "yellow"), end="")
+            pause.until(datetime(*startTime))
+            print(colored(" Started!", "green"))
+            if (meetIndex <= 1):
                 login()
             attendMeet()
             time.sleep(DURATION)
