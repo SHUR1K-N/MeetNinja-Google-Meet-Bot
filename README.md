@@ -13,7 +13,7 @@ This project was created in Python, for the fellow comrades and homies.
 ## Features
 - Mulitple Meet sessions supported, according to the user-defined Meet schedule
 - Works even with the display on sleep (and does not wake it up either)
-- Works even in the background while you do other work (as long as you do not *explicitly* "Minimize" the Chrome window MeetNinja generates; just keep it open in the background, beneath your current work or window)
+- Works even in the background while you do other work (as long as you do not *explicitly* "Minimize" the Chrome window MeetNinja generates; just keep it open in the background, beneath your current open window(s))
 - Automatically disables camera & microphone in-Meet
 - Color-coded & concise activity logging (verbose) with timestamps of all activities
 
