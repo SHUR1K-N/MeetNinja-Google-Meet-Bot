@@ -1,12 +1,11 @@
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 import colorama; from termcolor import colored
 import time; from datetime import datetime
 import pause; import os; import re
 
 colorama.init()
 
-##################################################################
+###################################################################
 #                        Meets                 Yr  M D  Hr min sec
 MEETS = {"https://meet.google.com/meetURL1": "2020 9 16 14 14 0",
          "https://meet.google.com/meetURL2": "2020 9 16 14 14 0",
@@ -15,9 +14,19 @@ MEETS = {"https://meet.google.com/meetURL1": "2020 9 16 14 14 0",
 DURATION = 60 # Duration of each Meet in minutes
 USERNAME = "emailaddress@gmail.com"
 PASSWORD = "passw0rd"
-CHROMEDRIVER = "chromedriver_win32/chromedriver.exe"
-#              "chromedriver_linux64/chromdriver" for Linux systems
-#              "chromedriver_mac64/chromdriver" for Mac systems
+BROWSER_DRIVER = "Browser Driver Path Goes Here (options below)"
+
+#                   Google Chrome
+#           Linux: "ChromeDrivers/linux64/chromedriver"
+#             Mac: "ChromeDrivers/mac64/chromedriver"
+#         Windows: "ChromeDrivers/win32/chromedriver.exe"
+
+#                   Mozilla Firefox
+#     Linux (x32): "FirefoxDrivers/linux32/geckodriver"
+#     Linux (x64): "FirefoxDrivers/linux64/geckodriver"
+#             Mac: "FirefoxDrivers/mac64/geckodriver"
+#   Windows (x32): "FirefoxDrivers/win32/geckodriver.exe"
+#   Windows (x64): "FirefoxDrivers/win64/geckodriver.exe"
 ##################################################################
 
 # All interactive field / button paths
@@ -55,15 +64,23 @@ def timeStamp():
 
 def initBrowser():
     print("\nInitializing browser...", end="")
-    chromeOptions = webdriver.ChromeOptions()
-    chromeOptions.add_argument("--disable-infobars")
-    chromeOptions.add_argument("--window-size=800,800")
-    chromeOptions.add_experimental_option('excludeSwitches', ['enable-logging'])
-    chromeOptions.add_experimental_option("prefs", {"profile.default_content_setting_values.media_stream_mic": 2,
-                                                    "profile.default_content_setting_values.media_stream_camera": 2,
-                                                    "profile.default_content_setting_values.notifications": 2
-                                                    })
-    driver = webdriver.Chrome(executable_path=CHROMEDRIVER, options=chromeOptions)
+    if BROWSER_DRIVER.lower().startswith("chrome"):
+        chromeOptions = webdriver.ChromeOptions()
+        chromeOptions.add_argument("--disable-infobars")
+        chromeOptions.add_argument("--window-size=800,800")
+        chromeOptions.add_experimental_option('excludeSwitches', ['enable-logging'])
+        chromeOptions.add_experimental_option("prefs", {"profile.default_content_setting_values.media_stream_mic": 2,
+                                                        "profile.default_content_setting_values.media_stream_camera": 2,
+                                                        "profile.default_content_setting_values.notifications": 2
+                                                        })
+        driver = webdriver.Chrome(executable_path=BROWSER_DRIVER, options=chromeOptions)
+
+    elif BROWSER_DRIVER.lower().startswith("firefox"):
+        firefoxOptions = webdriver.FirefoxOptions()
+        firefoxOptions.add_argument("--width=800"), firefoxOptions.add_argument("--height=800")
+        firefoxOptions.set_preference("permissions.default.microphone", 2)
+        firefoxOptions.set_preference("permissions.default.camera", 2)
+        driver = webdriver.Firefox(executable_path=BROWSER_DRIVER, options=firefoxOptions)
     print(colored(" Success!", "green"))
     return(driver)
 
@@ -93,7 +110,7 @@ def attendMeet():
     driver.get(URL)
     print(colored(" Success!", "green"))
     print(f"Entering Google Meet #{meetIndex}...", end="")
-    time.sleep(3)
+    time.sleep(4)
 
     try:
         xButton = driver.find_element_by_css_selector(xButtonPath)
@@ -125,12 +142,13 @@ def genericError():
     # clrscr()
     print(colored(" Failed!", "red"), end="")
     print("\n\nPossible fixes:\n")
-    print("1. Check your inputs and run MeetNinja again (make sure there are no leading zeros in the Meet start times)")
-    print("2. Make sure the developer browser is always open and visible (on top) while MeetNinja is working")
-    print("3.1. Make sure the \"chromedriver\" file is of the latest stable build (https://chromedriver.chromium.org/)")
-    print("3.2. And / Or make sure your Google Chrome is updated to the latest version")
-    print("3.3. And / Or make sure the \"chromedriver\" file is at least of the same version as Chrome (or lower)")
-    print("4. Make sure the small \"time.sleep\" delays in the functions are comfortable for your internet speed")
+    print("1.1 Check your inputs and run MeetNinja again (make sure there are no leading zeros in the Meet start times)")
+    print("1.2 And / Or make sure you have chosen the correct webdriver file respective of your operating system")
+    print("2. Make sure the generated web browser is not \"Minimized\" while MeetNinja is working")
+    print("3.1. Make sure the webdriver file is of the latest stable build (https://chromedriver.chromium.org/ or https://github.com/mozilla/geckodriver/releases)")
+    print("3.2. And / Or make sure your chosen web browser is updated to the latest version")
+    print("3.3. And / Or make sure the webdriver file is at least of the same version as your chosen web browser (or lower)")
+    print("4. Make sure the small \"time.sleep()\" delays in the functions are comfortable for your internet speed")
     print("5. Make sure your internet connection is stable throughout the process")
     print("\nPress Enter to exit.")
     input()
