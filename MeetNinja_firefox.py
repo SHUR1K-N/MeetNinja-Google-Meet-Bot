@@ -10,7 +10,7 @@ CHROMEDRIVER = "geckodriver.exe"
 
 ##################################################################
 #                        Meets                     Yr  M D  Hr min sec
-MEETS = {"https://meet.google.com/ndi-ytfk-vku": "2020 9 20 14 15 0"} #works for only one meeting
+MEETS = {"https://meet.google.com/URL1": "2020 9 20 14 15 0"} #works for only one meeting
 DURATION = 1 # Duration of each Meet in minutes
 USERNAME = "emailaddress@gmail.com"
 PASSWORD = "passw0rd"
