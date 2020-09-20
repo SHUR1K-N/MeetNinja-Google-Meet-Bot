@@ -18,7 +18,7 @@ This project was created in Python, for the fellow comrades and homies.
 - Color-coded & concise activity logging (verbose) with timestamps of all activities
 
 ## Usage
-1. Clone / Download this repository or its content (mainly **MeetNinja.py** and **chromedriver.exe**)
+1. Clone / Download this repository or its content (mainly **MeetNinja.py** and the **chromedriver** file for your OS)
 
 2. PIP-install all the packages mentioned under the [last subheading](https://github.com/SHUR1K-N/MeetNinja-Google-Meet-Bot#dependencies-to-pip-install "last subheading") on this page
 
