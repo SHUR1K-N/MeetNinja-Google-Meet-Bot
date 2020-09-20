@@ -18,11 +18,11 @@ This project was created in Python, for the fellow comrades and homies.
 - Color-coded & concise activity logging (verbose) with timestamps of all activities
 
 ## Usage
-1. Clone / Download this repository or its content (mainly **MeetNinja.py** and **chromedriver.exe**)
+1. Clone / Download this repository or its content (mainly **MeetNinja.py** and the **chromedriver** file for your OS)
 
 2. PIP-install all the packages mentioned under the [last subheading](https://github.com/SHUR1K-N/MeetNinja-Google-Meet-Bot#dependencies-to-pip-install "last subheading") on this page
 
-3. Do not run MeetNinja.py just yet. First, open it using any editor, and substitute your inputs (Google Meet URLs, their start times, duration of all Meets, Google username, and password) into the dummy values in the following section of the code (highlighted):
+3. Do not run MeetNinja.py just yet. First, open it using any editor, and substitute your inputs (Google Meet URLs, their start times, duration of all Meets, Google username, password, and path to the chromedriver file of your respective OS) into the dummy values in the following section of the code (highlighted):
 
 <div align="center">
 <img src="https://github.com/SHUR1K-N/MeetNinja-Google-Meet-Bot/blob/master/Images/Substitute.png" >

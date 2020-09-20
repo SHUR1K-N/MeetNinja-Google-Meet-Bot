@@ -6,8 +6,6 @@ import pause; import os; import re
 
 colorama.init()
 
-CHROMEDRIVER = "chromedriver.exe"
-
 ##################################################################
 #                        Meets                 Yr  M D  Hr min sec
 MEETS = {"https://meet.google.com/meetURL1": "2020 9 16 14 14 0",
@@ -17,6 +15,9 @@ MEETS = {"https://meet.google.com/meetURL1": "2020 9 16 14 14 0",
 DURATION = 60 # Duration of each Meet in minutes
 USERNAME = "emailaddress@gmail.com"
 PASSWORD = "passw0rd"
+CHROMEDRIVER = "chromedriver_win32/chromedriver.exe"
+#              "chromedriver_linux64/chromdriver" for Linux systems
+#              "chromedriver_mac64/chromdriver" for Mac systems
 ##################################################################
 
 # All interactive field / button paths
@@ -126,7 +127,9 @@ def genericError():
     print("\n\nPossible fixes:\n")
     print("1. Check your inputs and run MeetNinja again (make sure there are no leading zeros in the Meet start times)")
     print("2. Make sure the developer browser is always open and visible (on top) while MeetNinja is working")
-    print("3. Make sure \"chromedriver.exe\" is of the latest stable build (https://chromedriver.chromium.org/)")
+    print("3.1. Make sure the \"chromedriver\" file is of the latest stable build (https://chromedriver.chromium.org/)")
+    print("3.2. And / Or make sure your Google Chrome is updated to the latest version")
+    print("3.3. And / Or make sure the \"chromedriver\" file is at least of the same version as Chrome (or lower)")
     print("4. Make sure the small \"time.sleep\" delays in the functions are comfortable for your internet speed")
     print("5. Make sure your internet connection is stable throughout the process")
     print("\nPress Enter to exit.")
