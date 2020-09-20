@@ -1,7 +1,7 @@
 # MeetNinja: The Google Meet Bot
 
 ## Description
-A super dope tool that attends your Google Meet(s) for you on autopilot while you sleep or work on something else. MeetNinja flawlessly handles multiple Meet sessions, background activity, scheduling, and also disables your Meet camera & microphone in-Meet! It is also equipped with color-coded, concise activity logging (verbose) with timestamps of all joining & ending activities for each Meet session (to assure you—upon your return—that your Meets were *indeed* successfully attended).
+A super dope tool that attends your Google Meet(s) for you on autopilot while you sleep or work on something else. MeetNinja flawlessly handles multiple Meet sessions, background activity, scheduling, and also disables your Meet camera & microphone in-Meet! It is also equipped with color-coded, concise activity logging (verbose) with timestamps of all joining & ending activities for each Meet session (to assure you—upon your return—that your Meets were *indeed* successfully attended). Supports both Google Chrome *and* Mozilla Firefox!
 
 <div align="center">
 <img src="https://github.com/SHUR1K-N/MeetNinja-Google-Meet-Bot/blob/master/Images/Example.png" >
@@ -16,13 +16,14 @@ This project was created in Python, for the fellow comrades and homies.
 - Works even in the background while you do other work (as long as you do not *explicitly* "Minimize" the Chrome window MeetNinja generates; just keep it open in the background, beneath your current open window(s))
 - Automatically disables camera & microphone in-Meet
 - Color-coded & concise activity logging (verbose) with timestamps of all activities
+- Supports Google Chrome *and* Mozilla Firefox
 
 ## Usage
-1. Clone / Download this repository or its content (mainly **MeetNinja.py** and the **chromedriver** file for your OS)
+1. Clone / Download this repository or its content (mainly **MeetNinja.py** and the **chromedriver** file for your web browser and OS)
 
 2. PIP-install all the packages mentioned under the [last subheading](https://github.com/SHUR1K-N/MeetNinja-Google-Meet-Bot#dependencies-to-pip-install "last subheading") on this page
 
-3. Do not run MeetNinja.py just yet. First, open it using any editor, and substitute your inputs (Google Meet URLs, their start times, duration of all Meets, Google username, password, and path to the chromedriver file of your respective OS) into the dummy values in the following section of the code (highlighted):
+3. Do not run MeetNinja.py just yet. First, open it using any editor, and substitute your inputs (Google Meet URLs, their start times, duration of all Meets, Google username, password, path to the chromedriver file of your respective browser and OS) into the dummy values in the following section of the code (highlighted):
 
 <div align="center">
 <img src="https://github.com/SHUR1K-N/MeetNinja-Google-Meet-Bot/blob/master/Images/Substitute.png" >
