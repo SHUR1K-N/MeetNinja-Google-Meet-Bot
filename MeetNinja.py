@@ -27,7 +27,7 @@ BROWSER_DRIVER = "Browser Driver Path Goes Here (options below)"
 #             Mac: "FirefoxDrivers/mac64/geckodriver"
 #   Windows (x32): "FirefoxDrivers/win32/geckodriver.exe"
 #   Windows (x64): "FirefoxDrivers/win64/geckodriver.exe"
-##################################################################
+###################################################################
 
 # All interactive field / button paths
 usernameFieldPath = "/html/body/div[1]/div[1]/div[2]/div/div[2]/div/div/div[2]/div/div[1]/div/form/span/section/div/div/div[1]/div/div[1]/div/div[1]/input"
