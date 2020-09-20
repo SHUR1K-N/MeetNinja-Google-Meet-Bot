@@ -16,6 +16,8 @@ DURATION = 60 # Duration of each Meet in minutes
 USERNAME = "emailaddress@gmail.com"
 PASSWORD = "passw0rd"
 CHROMEDRIVER = "chromedriver_win32/chromedriver.exe"
+#              "chromedriver_linux64/chromdriver" for Linux systems
+#              "chromedriver_mac64/chromdriver" for Mac systems
 ##################################################################
 
 # All interactive field / button paths
