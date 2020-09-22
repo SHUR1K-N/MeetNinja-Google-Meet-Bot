@@ -67,6 +67,7 @@ def initBrowser():
     if BROWSER_DRIVER.lower().startswith("chrome"):
         chromeOptions = webdriver.ChromeOptions()
         chromeOptions.add_argument("--disable-infobars")
+        chromeOptions.add_argument("--mute-audio")
         chromeOptions.add_argument("--window-size=800,800")
         chromeOptions.add_experimental_option('excludeSwitches', ['enable-logging'])
         chromeOptions.add_experimental_option("prefs", {"profile.default_content_setting_values.media_stream_mic": 2,
@@ -78,6 +79,7 @@ def initBrowser():
     elif BROWSER_DRIVER.lower().startswith("firefox"):
         firefoxOptions = webdriver.FirefoxOptions()
         firefoxOptions.add_argument("--width=800"), firefoxOptions.add_argument("--height=800")
+        firefoxOptions.set_preference("media.volume_scale", "0.0")
         firefoxOptions.set_preference("permissions.default.microphone", 2)
         firefoxOptions.set_preference("permissions.default.camera", 2)
         driver = webdriver.Firefox(executable_path=BROWSER_DRIVER, options=firefoxOptions)
