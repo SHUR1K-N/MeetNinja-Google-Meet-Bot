@@ -110,18 +110,18 @@ def attendMeet():
     driver.get(URL)
     print(colored(" Success!", "green"))
     print(f"Entering Google Meet #{meetIndex}...", end="")
-    time.sleep(4)
+    time.sleep(5)
 
     try:
         xButton = driver.find_element_by_css_selector(xButtonPath)
         xButton.click()
-        time.sleep(1)
+        time.sleep(2)
     except:
         pass
     try:
         dismissButton = driver.find_element_by_xpath(dismissButtonPath)
         dismissButton.click()
-        time.sleep(1)
+        time.sleep(2)
     except:
         pass
 
@@ -143,12 +143,12 @@ def genericError():
     print(colored(" Failed!", "red"), end="")
     print("\n\nPossible fixes:\n")
     print("1.1 Check your inputs and run MeetNinja again (make sure there are no leading zeros in the Meet start times)")
-    print("1.2 And / Or make sure you have chosen the correct webdriver file respective of your operating system")
+    print("1.2 And / Or make sure you have chosen the correct webdriver file respective of your web browser and operating system")
     print("2. Make sure the generated web browser is not \"Minimized\" while MeetNinja is working")
     print("3.1. Make sure the webdriver file is of the latest stable build (https://chromedriver.chromium.org/ or https://github.com/mozilla/geckodriver/releases)")
     print("3.2. And / Or make sure your chosen web browser is updated to the latest version")
     print("3.3. And / Or make sure the webdriver file is at least of the same version as your chosen web browser (or lower)")
-    print("4. Make sure the small \"time.sleep()\" delays in the functions are comfortable for your internet speed")
+    print("4. Make sure the small \"time.sleep()\" delays (in seconds) in the functions are comfortable for your internet speed")
     print("5. Make sure your internet connection is stable throughout the process")
     print("\nPress Enter to exit.")
     input()
