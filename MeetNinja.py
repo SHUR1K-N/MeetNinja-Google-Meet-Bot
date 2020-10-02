@@ -29,14 +29,14 @@ BROWSER_DRIVER = "Browser Driver Path Goes Here (options below)"
 #   Windows (x64): "FirefoxDrivers/win64/geckodriver.exe"
 ###################################################################
 
-# All interactive field / button paths
+# All interactive field / button locators (In rare cases in the future, you may have to change these locators in case Google updates them internally)
 usernameFieldPath = "/html/body/div[1]/div[1]/div[2]/div/div[2]/div/div/div[2]/div/div[1]/div/form/span/section/div/div/div[1]/div/div[1]/div/div[1]/input"
 nextButtonPath = "/html/body/div[1]/div[1]/div[2]/div/div[2]/div/div/div[2]/div/div[2]/div/div[1]/div/div/button/div[2]"
 passwordFieldPath = "/html/body/div[1]/div[1]/div[2]/div/div[2]/div/div/div[2]/div/div[1]/div/form/span/section/div/div/div[1]/div[1]/div/div/div/div/div[1]/div/div[1]/input"
 dismissButtonPath = "/html/body/div[1]/div[3]/div/div[2]/div[3]/div/span/span"
 xButtonPath = "#yDmH0d > div.llhEMd.iWO5td > div > div.g3VIld.B2Jb7d.Up8vH.hFEqNb.J9Nfi.iWO5td > div.R6Lfte.es33Kc.TNczib.X1clqd > div.bZWIgd > div > span > span > svg"
-joinButtonPath = "/html/body/div[1]/c-wiz/div/div/div[5]/div[3]/div/div[2]/div/div/div[2]/div/div[2]/div/div[1]/div[1]/span/span"
-endButtonPath = "/html/body/div[1]/c-wiz/div[1]/div/div[5]/div[3]/div[9]/div[2]/div[2]/div"
+joinButtonPath = "//span[contains(text(), 'Join now')]"
+endButtonPath = "/html/body/div[1]/c-wiz/div[1]/div/div[4]/div[3]/div[9]/div[2]/div[2]/div"
 
 BANNER1 = colored('''
                      ███▄ ▄███▓▓█████ ▓█████▄▄▄█████▓ ███▄    █  ██▓ ███▄    █  ▄▄▄██▀▀▀▄▄▄
@@ -184,6 +184,7 @@ if __name__ == "__main__":
             pause.until(datetime(*startTime))
             print(colored(" Started!", "green"))
             if (meetIndex <= 1):
+                time.sleep(5)
                 login()
             attendMeet()
             time.sleep(DURATION)
@@ -200,4 +201,5 @@ if __name__ == "__main__":
         input()
         driver.quit()
     except:
+        # print(e)
         genericError()
