@@ -1,7 +1,9 @@
 from selenium import webdriver
-import colorama; from termcolor import colored
-import time; from datetime import datetime
+from selenium.webdriver.support import expected_conditions as when
+from selenium.webdriver.common.by import By as by
 import pause; import os; import re
+import time; from datetime import datetime
+import colorama; from termcolor import colored
 
 colorama.init()
 
@@ -67,6 +69,8 @@ def initBrowser():
     if BROWSER_DRIVER.lower().startswith("chrome"):
         chromeOptions = webdriver.ChromeOptions()
         chromeOptions.add_argument("--disable-infobars")
+        chromeOptions.add_argument("--disable-gpu")
+        chromeOptions.add_argument("--disable-extensions")
         chromeOptions.add_argument("--window-size=800,800")
         chromeOptions.add_experimental_option('excludeSwitches', ['enable-logging'])
         chromeOptions.add_experimental_option("prefs", {"profile.default_content_setting_values.media_stream_mic": 2,
@@ -78,6 +82,9 @@ def initBrowser():
     elif BROWSER_DRIVER.lower().startswith("firefox"):
         firefoxOptions = webdriver.FirefoxOptions()
         firefoxOptions.add_argument("--width=800"), firefoxOptions.add_argument("--height=800")
+        # firefoxOptions.headless = True
+        firefoxOptions.set_preference("layers.acceleration.disabled", True)
+        firefoxOptions.set_preference("browser.privatebrowsing.autostart", True)
         firefoxOptions.set_preference("permissions.default.microphone", 2)
         firefoxOptions.set_preference("permissions.default.camera", 2)
         driver = webdriver.Firefox(executable_path=BROWSER_DRIVER, options=firefoxOptions)
@@ -89,17 +96,18 @@ def login():
     print("Logging into Google account...", end="")
     driver.get('https://accounts.google.com/signin')
 
-    username = driver.find_element_by_xpath(usernameFieldPath)
+    username = wait.until(when.element_to_be_clickable((by.XPATH, usernameFieldPath)))
+    time.sleep(1)
     username.send_keys(USERNAME)
 
-    nextButton = driver.find_element_by_xpath(nextButtonPath)
+    nextButton = wait.until(when.element_to_be_clickable((by.XPATH, nextButtonPath)))
     nextButton.click()
-    time.sleep(3)
 
-    password = driver.find_element_by_xpath(passwordFieldPath)
+    password = wait.until(when.element_to_be_clickable((by.XPATH, passwordFieldPath)))
+    time.sleep(1)
     password.send_keys(PASSWORD)
 
-    nextButton = driver.find_element_by_xpath(nextButtonPath)
+    nextButton = wait.until(when.element_to_be_clickable((by.XPATH, nextButtonPath)))
     nextButton.click()
     time.sleep(3)
     print(colored(" Success!", "green"))
@@ -110,22 +118,25 @@ def attendMeet():
     driver.get(URL)
     print(colored(" Success!", "green"))
     print(f"Entering Google Meet #{meetIndex}...", end="")
-    time.sleep(5)
 
-    try:
-        xButton = driver.find_element_by_css_selector(xButtonPath)
-        xButton.click()
-        time.sleep(2)
-    except:
-        pass
-    try:
-        dismissButton = driver.find_element_by_xpath(dismissButtonPath)
-        dismissButton.click()
-        time.sleep(2)
-    except:
-        pass
+    if BROWSER_DRIVER.lower().startswith("chrome"):
+        try:
+            dismissButton = wait.until(when.element_to_be_clickable((by.XPATH, dismissButtonPath)))
+            time.sleep(1)
+            dismissButton.click()
+            skipFlag = True
+        except:
+            skipFlag = False
+        if (skipFlag is False):
+            try:
+                xButton = wait.until(when.element_to_be_clickable((by.CSS_SELECTOR, xButtonPath)))
+                time.sleep(1)
+                xButton.click()
+            except:
+                pass
 
-    joinButton = driver.find_element_by_xpath(joinButtonPath)
+    joinButton = wait.until(when.element_to_be_clickable((by.XPATH, joinButtonPath)))
+    time.sleep(1)
     joinButton.click()
     print(colored(" Success!", "green"))
     time.sleep(1)
@@ -175,6 +186,7 @@ if __name__ == "__main__":
     try:
         DURATION *= 60
         driver = initBrowser()
+        wait = webdriver.support.ui.WebDriverWait(driver, 5)
         for meetIndex, (URL, startTime) in enumerate(MEETS.items(), start=1):
             startTime = list(map(int, startTime.split()))
             if (meetIndex <= 1):
@@ -184,7 +196,6 @@ if __name__ == "__main__":
             pause.until(datetime(*startTime))
             print(colored(" Started!", "green"))
             if (meetIndex <= 1):
-                time.sleep(5)
                 login()
             attendMeet()
             time.sleep(DURATION)
@@ -192,6 +203,7 @@ if __name__ == "__main__":
         print("\n\nAll Meets completed successfully.")
         print("Press Enter to exit.")
         input()
+        print("\nCleaning up and exiting...", end="")
         driver.quit()
 
     except KeyboardInterrupt:
@@ -199,6 +211,7 @@ if __name__ == "__main__":
         print("\nCTRL ^C\n\nThrew a wrench in the works.")
         print("Press Enter to exit.")
         input()
+        print("\nCleaning up and exiting...", end="")
         driver.quit()
     except:
         # print(e)
