@@ -1,6 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as when
 from selenium.webdriver.common.by import By as by
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.keys import Keys
 import pause; import os; import re
 import time; from datetime import datetime
 import colorama; from termcolor import colored
@@ -31,14 +33,13 @@ BROWSER_DRIVER = "Browser Driver Path Goes Here (options below)"
 #   Windows (x64): "FirefoxDrivers/win64/geckodriver.exe"
 ###################################################################
 
-# All interactive field / button locators (In rare cases in the future, you may have to change these locators in case Google updates them internally)
-usernameFieldPath = "/html/body/div[1]/div[1]/div[2]/div/div[2]/div/div/div[2]/div/div[1]/div/form/span/section/div/div/div[1]/div/div[1]/div/div[1]/input"
-nextButtonPath = "/html/body/div[1]/div[1]/div[2]/div/div[2]/div/div/div[2]/div/div[2]/div/div[1]/div/div/button/div[2]"
-passwordFieldPath = "/html/body/div[1]/div[1]/div[2]/div/div[2]/div/div/div[2]/div/div[1]/div/form/span/section/div/div/div[1]/div[1]/div/div/div/div/div[1]/div/div[1]/input"
-dismissButtonPath = "/html/body/div[1]/div[3]/div/div[2]/div[3]/div/span/span"
-xButtonPath = "#yDmH0d > div.llhEMd.iWO5td > div > div.g3VIld.B2Jb7d.Up8vH.hFEqNb.J9Nfi.iWO5td > div.R6Lfte.es33Kc.TNczib.X1clqd > div.bZWIgd > div > span > span > svg"
-joinButtonPath = "//span[contains(text(), 'Join now')]"
-endButtonPath = "/html/body/div[1]/c-wiz/div[1]/div/div[4]/div[3]/div[9]/div[2]/div[2]/div"
+# All interactive field / button locators (In highly unlikely cases in the future, you may have to change these locators in case Google updates them internally)
+usernameFieldPath = "identifierId"
+usernameNextButtonPath = "identifierNext"
+passwordFieldPath = "password"
+passwordNextButtonPath = "passwordNext"
+joinButtonPath = "//span[contains(text(), 'Join')]"
+endButtonPath = "[aria-label='Leave call']"
 
 BANNER1 = colored('''
                      ███▄ ▄███▓▓█████ ▓█████▄▄▄█████▓ ███▄    █  ██▓ ███▄    █  ▄▄▄██▀▀▀▄▄▄
@@ -96,19 +97,19 @@ def login():
     print("Logging into Google account...", end="")
     driver.get('https://accounts.google.com/signin')
 
-    username = wait.until(when.element_to_be_clickable((by.XPATH, usernameFieldPath)))
+    usernameField = wait.until(when.element_to_be_clickable((by.ID, usernameFieldPath)))
     time.sleep(1)
-    username.send_keys(USERNAME)
+    usernameField.send_keys(USERNAME)
 
-    nextButton = wait.until(when.element_to_be_clickable((by.XPATH, nextButtonPath)))
-    nextButton.click()
+    usernameNextButton = wait.until(when.element_to_be_clickable((by.ID, usernameNextButtonPath)))
+    usernameNextButton.click()
 
-    password = wait.until(when.element_to_be_clickable((by.XPATH, passwordFieldPath)))
+    passwordField = wait.until(when.element_to_be_clickable((by.NAME, passwordFieldPath)))
     time.sleep(1)
-    password.send_keys(PASSWORD)
+    passwordField.send_keys(PASSWORD)
 
-    nextButton = wait.until(when.element_to_be_clickable((by.XPATH, nextButtonPath)))
-    nextButton.click()
+    passwordNextButton = wait.until(when.element_to_be_clickable((by.ID, passwordNextButtonPath)))
+    passwordNextButton.click()
     time.sleep(3)
     print(colored(" Success!", "green"))
 
@@ -119,32 +120,27 @@ def attendMeet():
     print(colored(" Success!", "green"))
     print(f"Entering Google Meet #{meetIndex}...", end="")
 
-    if BROWSER_DRIVER.lower().startswith("chrome"):
-        try:
-            dismissButton = wait.until(when.element_to_be_clickable((by.XPATH, dismissButtonPath)))
-            time.sleep(1)
-            dismissButton.click()
-            skipFlag = True
-        except:
-            skipFlag = False
-        if (skipFlag is False):
-            try:
-                xButton = wait.until(when.element_to_be_clickable((by.CSS_SELECTOR, xButtonPath)))
-                time.sleep(1)
-                xButton.click()
-            except:
-                pass
-
     joinButton = wait.until(when.element_to_be_clickable((by.XPATH, joinButtonPath)))
+    if BROWSER_DRIVER.lower().startswith("chrome"):
+        time.sleep(1)
+        action.send_keys(Keys.ESCAPE).perform()
     time.sleep(1)
     joinButton.click()
+
     print(colored(" Success!", "green"))
     time.sleep(1)
     print(colored(f"Now attending Google Meet #{meetIndex} @{timeStamp()}", "green"), end="")
 
+    try:
+        joinButton = wait.until(when.element_to_be_clickable((by.XPATH, joinButtonPath)))   # For another prompt that pops up for Meets being recorded
+        time.sleep(1)
+        joinButton.click()
+    except:
+        pass
+
 
 def endMeet():
-    endButton = driver.find_element_by_xpath(endButtonPath)
+    endButton = driver.find_element_by_css_selector(endButtonPath)
     endButton.click()
     print(colored(f"\nSuccessfully ended Google Meet #{meetIndex} @{timeStamp()}\n", "red"), end="")
 
@@ -155,8 +151,8 @@ def genericError():
     print("\n\nPossible fixes:\n")
     print("1.1 Check your inputs and run MeetNinja again (make sure there are no leading zeros in the Meet start times)")
     print("1.2 And / Or make sure you have chosen the correct webdriver file respective of your web browser and operating system")
-    print("2. Make sure the generated web browser is not \"Minimized\" while MeetNinja is working (keeping open behind other windows is fine)")
-    print("3.1. Make sure the webdriver file is of the latest stable build (https://chromedriver.chromium.org/ for chrome or https://github.com/mozilla/geckodriver/releases) for Firefox")
+    print("2. Make sure the generated web browser is not \"Minimized\" while MeetNinja is working")
+    print("3.1. Make sure the webdriver file is of the latest stable build (https://chromedriver.chromium.org/ or https://github.com/mozilla/geckodriver/releases)")
     print("3.2. And / Or make sure your chosen web browser is updated to the latest version")
     print("3.3. And / Or make sure the webdriver file is at least of the same version as your chosen web browser (or lower)")
     print("4. Make sure your internet connection is stable throughout the process")
@@ -186,6 +182,7 @@ if __name__ == "__main__":
         DURATION *= 60
         driver = initBrowser()
         wait = webdriver.support.ui.WebDriverWait(driver, 5)
+        action = ActionChains(driver)
         for meetIndex, (URL, startTime) in enumerate(MEETS.items(), start=1):
             startTime = list(map(int, startTime.split()))
             if (meetIndex <= 1):
