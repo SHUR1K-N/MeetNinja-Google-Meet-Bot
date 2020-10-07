@@ -10,10 +10,10 @@ import colorama; from termcolor import colored
 colorama.init()
 
 ###################################################################
-#                        Meets                 Yr  M D  Hr min sec
-MEETS = {"https://meet.google.com/meetURL1": "2020 9 16 14 14 0",
-         "https://meet.google.com/meetURL2": "2020 9 16 14 14 0",
-         "https://meet.google.com/meetURL3": "2020 9 16 14 16 0",
+#                        Meets                  Y  M  D  H  m  s
+MEETS = {"https://meet.google.com/meetURL1": "2020 12 31 23 59 59",
+         "https://meet.google.com/meetURL2": "2020 12 31 23 59 59",
+         "https://meet.google.com/meetURL3": "2020 12 31 23 59 59",
          }
 DURATION = 60 # Duration of each Meet in minutes
 USERNAME = "emailaddress@gmail.com"
@@ -149,7 +149,7 @@ def genericError():
     # clrscr()
     print(colored(" Failed!", "red"), end="")
     print("\n\nPossible fixes:\n")
-    print("1.1 Check your inputs and run MeetNinja again (make sure there are no leading zeros in the Meet start times)")
+    print("1.1 Check your inputs and run MeetNinja again")
     print("1.2 And / Or make sure you have chosen the correct webdriver file respective of your web browser and operating system")
     print("2. Make sure the generated web browser is not \"Minimized\" while MeetNinja is working")
     print("3.1. Make sure the webdriver file is of the latest stable build (https://chromedriver.chromium.org/ or https://github.com/mozilla/geckodriver/releases)")
