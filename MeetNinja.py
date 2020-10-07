@@ -209,6 +209,7 @@ if __name__ == "__main__":
         print("\nCleaning up and exiting...", end="")
         driver.quit()
         # hibernate()
+        # Uncomment above to hibernate after a 10 second countdown upon completion of all Meets (Ctrl + C to abort hibernation)
 
     except KeyboardInterrupt:
         # clrscr()
@@ -219,4 +220,5 @@ if __name__ == "__main__":
         driver.quit()
     except:
         # print(e)
+        # Uncomment above to display error traceback (use when reporting issues)
         genericError()
