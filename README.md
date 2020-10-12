@@ -13,17 +13,17 @@ This project was created in Python, for the fellow comrades and homies.
 ## Features
 - Mulitple Meet sessions supported, according to the user-defined Meet schedule
 - Works even with the display on sleep (and does not wake it up either)
-- Works even in the background while you do other work (as long as you do not *explicitly* "Minimize" the Chrome window MeetNinja generates; just keep it open in the background, beneath your current open window(s))
+- Works even in the background while you do other work (as long as you do not *explicitly* "Minimize" the browser window MeetNinja generates; just keep it open in the background, beneath your current open window(s))
 - Automatically disables camera & microphone in-Meet
 - Color-coded & concise activity logging (verbose) with timestamps of all activities
 - Supported web browsers: Google Chrome & Mozilla Firefox
 
 ## Usage
-1. Clone / Download this repository or its content (mainly **MeetNinja.py** and the **chromedriver** file for your web browser and OS)
+1. Clone / Download this repository or its content (mainly **MeetNinja.py** and the **chromedriver / geckodriver** file for your web browser and OS)
 
 2. PIP-install all the packages mentioned under the [last subheading](https://github.com/SHUR1K-N/MeetNinja-Google-Meet-Bot#dependencies-to-pip-install "last subheading") on this page
 
-3. Do not run MeetNinja.py just yet. First, open it using any editor, and substitute your inputs (Google Meet URLs, their start times, duration of all Meets, Google username, password, path to the chromedriver file of your respective browser and OS) into the dummy values in the following section of the code (highlighted):
+3. Do not run MeetNinja.py just yet. First, open it using any editor, and substitute your inputs (Google Meet URLs, their start times, duration of all Meets, Google username, password, path to the web driver file of your respective browser and OS) into the dummy values in the following section of the code (highlighted):
 
 <div align="center">
 <img src="https://github.com/SHUR1K-N/MeetNinja-Google-Meet-Bot/blob/master/Images/Substitute.png" >
@@ -35,7 +35,7 @@ This project was created in Python, for the fellow comrades and homies.
 5. Take the chillest of pills (figuratively) and abandon all your worries; MeetNinja's got your back
 
 ### What MeetNinja Does
-Upon execution, MeetNinja generates a new Google Chrome window in Developer Mode, and this new window stays idle until it is time to join your first Meet (according to your schedule). Once it is time, MeetNinja automatically logs you into your Google account, navigates to the first Meet URL, disables your camera & microphone, joins the Meet session, and then waits until the duration specified (60 minutes by default) before ending the call and repeating the same for the *next* Meet session (whenever it may be) and so on, until your schedule has exhausted *(phew)* — all this with just a single (double) click!
+Upon execution, MeetNinja generates a new Google Chrome / Mozilla Firefox window in Developer Mode, and this new window stays idle until it is time to join your first Meet (according to your schedule). Once it is time, MeetNinja automatically logs you into your Google account, navigates to the first Meet URL, disables your camera & microphone, joins the Meet session, and then waits until the duration specified (60 minutes by default) before ending the call and repeating the same for the *next* Meet session (whenever it may be) and so on, until your schedule has exhausted *(phew)* — all this with just a single (double) click!
 
 ## Tip(s) for CyberJedi-like Usage
 ### Wake-on-LAN
@@ -49,14 +49,14 @@ I highly recommend [**this Android app**](https://play.google.com/store/apps/det
 You may also need or use the above remote desktop client(s) if you need to mid-sleep-check on your progress or if your computer system has a login password you may need to enter remotely after a Wake-on-LAN.
 
 ## Note
-1. Make sure you do not close the generated web browser window until all your Meets are attended
+1. MeetNinja works even in the background while you do other work on other windows, as long as you **do not *explicitly* "Minimize" MeetNinja's generated browser window**; just keep it open in the background, beneath your current open window(s)
 
-2. There is *deliberately* no Headless Mode (at the moment) due to potential complications arising from exiting MeetNinja while a Meet is still active (such as the Meet not ending and you being a part of the Meet unknowingly till the end of time)
+2. There is *deliberately* no Headless Mode (at the moment) due to potential complications arising from exiting MeetNinja while a Meet is still active (such as the Meet not relatively "naturally" ending and you being a part of the Meet unknowingly till the end of time)
 
 3. Although you may abort the process at any stage or time by pressing CTRL + C from within the MeetNinja console / terminal window, it is not advised to do so from within an active Meet (for reasons similar to the previous point)
 
 ## Dependencies to PIP-Install
-- **selenium** (for Chrome-based automation)
+- **selenium** (for web browser-based automation)
 - **datetime** (for scheduling & timestamps)
 - **pause** (for scheduling)
 - **colorama** (for colors)
