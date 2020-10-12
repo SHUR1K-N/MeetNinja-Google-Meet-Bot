@@ -11,9 +11,10 @@ colorama.init()
 
 ###################################################################
 #                        Meets                  Y  M  D  H  m  s
-MEETS = {"https://meet.google.com/meetURL1": "2020 12 31 23 59 59",
-         "https://meet.google.com/meetURL2": "2020 12 31 23 59 59",
-         "https://meet.google.com/meetURL3": "2020 12 31 23 59 59",
+MEETS = {"1 https://meet.google.com/meetURL1": "2020 12 31 23 59 59",
+         "2 https://meet.google.com/meetURL2": "2020 12 31 23 59 59",
+         "3 https://meet.google.com/meetURL3": "2020 12 31 23 59 59",
+         # Add more Meet URLs (if any) using the same format as above
          }
 DURATION = 60 # Duration of each Meet in minutes
 USERNAME = "emailaddress@gmail.com"
@@ -33,7 +34,7 @@ BROWSER_DRIVER = "Browser Driver Path Goes Here (options below)"
 #   Windows (x64): "FirefoxDrivers/win64/geckodriver.exe"
 ###################################################################
 
-# All interactive field / button locators (In highly unlikely cases in the future, you may have to change these locators in case Google updates them internally)
+# All required interactive elements' locators (text fields, buttons, etc.)
 usernameFieldPath = "identifierId"
 usernameNextButtonPath = "identifierNext"
 passwordFieldPath = "password"
@@ -116,7 +117,7 @@ def login():
 
 def attendMeet():
     print(f"\n\nNavigating to Google Meet #{meetIndex}...", end="")
-    driver.get(URL)
+    driver.get(URL[2:])
     print(colored(" Success!", "green"))
     print(f"Entering Google Meet #{meetIndex}...", end="")
 
@@ -204,12 +205,12 @@ if __name__ == "__main__":
             time.sleep(DURATION)
             endMeet()
         print("\n\nAll Meets completed successfully.")
+        # hibernate()
+        # Uncomment above to hibernate after a 10 second countdown upon completion of all Meets (Ctrl + C to abort hibernation)
         print("Press Enter to exit.")
         input()
         print("\nCleaning up and exiting...", end="")
         driver.quit()
-        # hibernate()
-        # Uncomment above to hibernate after a 10 second countdown upon completion of all Meets (Ctrl + C to abort hibernation)
 
     except KeyboardInterrupt:
         # clrscr()
