@@ -17,6 +17,7 @@ This project was created in Python, for the fellow comrades and homies.
 - Automatically disables camera & microphone in-Meet
 - Color-coded & concise activity logging (verbose) with timestamps of all activities
 - Supported web browsers: Google Chrome & Mozilla Firefox
+- Automatically checks for a newer MeetNinja version upon every execution
 
 ## Usage
 1. Clone / Download this repository or its content (mainly **MeetNinja.py** and the **chromedriver / geckodriver** file for your web browser and OS)
