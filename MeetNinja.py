@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from selenium import webdriver
+from selenium import webdriver; import requests
 from selenium.webdriver.support import expected_conditions as when
 from selenium.webdriver.common.by import By as by
 from selenium.webdriver.common.action_chains import ActionChains
@@ -44,6 +44,8 @@ passwordNextButtonPath = "passwordNext"
 joinButtonPath = "//span[contains(text(), 'Join')]"
 endButtonPath = "[aria-label='Leave call']"
 
+currentVersionNumber = "v2.1.0"
+VERSION_CHECK_URL = "https://raw.githubusercontent.com/SHUR1K-N/MeetNinja-Google-Meet-Bot/master/versionfile.txt"
 BANNER1 = colored('''
                      ███▄ ▄███▓▓█████ ▓█████▄▄▄█████▓ ███▄    █  ██▓ ███▄    █  ▄▄▄██▀▀▀▄▄▄
                     ▓██▒▀█▀ ██▒▓█   ▀ ▓█   ▀▓  ██▒ ▓▒ ██ ▀█   █ ▓██▒ ██ ▀█   █    ▒██  ▒████▄
@@ -183,11 +185,35 @@ def hibernate():
     _ = os.system('shutdown /h /f')
 
 
+def versionCheck():
+    global currentVersionNumber
+
+    print("\nChecking for MeetNinja updates...", end="")
+
+    crawlVersionFile = requests.get(VERSION_CHECK_URL)
+    crawlVersionFile = str(crawlVersionFile.content)
+    crawlVersionFile = re.findall(r"([0-9]+)", crawlVersionFile)
+    latestVersionNumber = int(''.join(crawlVersionFile))
+
+    currentVersionNumber = re.findall(r"([0-9]+)", currentVersionNumber)
+    currentVersionNumber = int(''.join(currentVersionNumber))
+
+    if currentVersionNumber >= latestVersionNumber:
+        print(colored(" You are using the latest version!", "green"))
+    elif currentVersionNumber < latestVersionNumber:
+        print(colored(" You are using an older version of MeetNinja.", "red"))
+        print(colored("Get the latest version at https://github.com/SHUR1K-N/MeetNinja-Google-Meet-Bot", "yellow"))
+        print(colored("Every new version comes with fixes, improvements, new features, etc..", "yellow"))
+        print(colored("Please do not open an Issue if you see this message and have not yet tried the latest version.", "yellow"))
+
+
 ############### Main ###############
 
 if __name__ == "__main__":
 
     printBanner()
+
+    versionCheck()
 
     try:
         DURATION *= 60
