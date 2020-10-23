@@ -58,6 +58,7 @@ You may also need or use the above remote desktop client(s) if you need to mid-s
 
 ## Dependencies to PIP-Install
 - **selenium** (for web browser-based automation)
+- **requests** (for automatic update checks)
 - **datetime** (for scheduling & timestamps)
 - **pause** (for scheduling)
 - **colorama** (for colors)
