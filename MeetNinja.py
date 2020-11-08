@@ -44,7 +44,7 @@ passwordNextButtonPath = "passwordNext"
 joinButtonPath = "//span[contains(text(), 'Join')]"
 endButtonPath = "[aria-label='Leave call']"
 
-currentVersionNumber = "v2.1.1"
+currentVersionNumber = "v2.2.0"
 VERSION_CHECK_URL = "https://raw.githubusercontent.com/SHUR1K-N/MeetNinja-Google-Meet-Bot/master/versionfile.txt"
 BANNER1 = colored('''
    ███▄ ▄███▓▓█████ ▓█████▄▄▄█████▓ ███▄    █  ██▓ ███▄    █  ▄▄▄██▀▀▀▄▄▄
@@ -65,6 +65,28 @@ def printBanner():
     print(BANNER1), print(BANNER2), print(BANNER3), print(BANNER4)
 
 
+def versionCheck():
+    global currentVersionNumber
+
+    print("\nChecking for MeetNinja updates...", end="")
+
+    crawlVersionFile = requests.get(VERSION_CHECK_URL)
+    crawlVersionFile = str(crawlVersionFile.content)
+    crawlVersionFile = re.findall(r"([0-9]+)", crawlVersionFile)
+    latestVersionNumber = int(''.join(crawlVersionFile))
+
+    currentVersionNumber = re.findall(r"([0-9]+)", currentVersionNumber)
+    currentVersionNumber = int(''.join(currentVersionNumber))
+
+    if currentVersionNumber >= latestVersionNumber:
+        print(colored(" You are using the latest version!", "green"))
+    elif currentVersionNumber < latestVersionNumber:
+        print(colored(" You are using an older version of MeetNinja.", "red"))
+        print(colored("Get the latest version at https://github.com/SHUR1K-N/MeetNinja-Google-Meet-Bot", "yellow"))
+        print(colored("Every new version comes with fixes, improvements, new features, etc..", "yellow"))
+        print(colored("Please do not open an Issue if you see this message and have not yet tried the latest version.", "yellow"))
+
+
 def timeStamp():
     timeNow = str(datetime.now())
     timeRegEx = re.findall(r"([0-9]+:[0-9]+:[0-9]+)", timeNow)
@@ -79,6 +101,7 @@ def initBrowser():
         chromeOptions.add_argument("--disable-gpu")
         chromeOptions.add_argument("--disable-extensions")
         chromeOptions.add_argument("--window-size=800,800")
+        chromeOptions.add_argument("--incognito")
         chromeOptions.add_experimental_option('excludeSwitches', ['enable-logging'])
         chromeOptions.add_experimental_option("prefs", {"profile.default_content_setting_values.media_stream_mic": 2,
                                                         "profile.default_content_setting_values.media_stream_camera": 2,
@@ -184,28 +207,6 @@ def hibernate():
     print("\nHibernating in 10 seconds. Press Ctrl + C to abort.")
     time.sleep(13)
     _ = os.system('shutdown /h /f')
-
-
-def versionCheck():
-    global currentVersionNumber
-
-    print("\nChecking for MeetNinja updates...", end="")
-
-    crawlVersionFile = requests.get(VERSION_CHECK_URL)
-    crawlVersionFile = str(crawlVersionFile.content)
-    crawlVersionFile = re.findall(r"([0-9]+)", crawlVersionFile)
-    latestVersionNumber = int(''.join(crawlVersionFile))
-
-    currentVersionNumber = re.findall(r"([0-9]+)", currentVersionNumber)
-    currentVersionNumber = int(''.join(currentVersionNumber))
-
-    if currentVersionNumber >= latestVersionNumber:
-        print(colored(" You are using the latest version!", "green"))
-    elif currentVersionNumber < latestVersionNumber:
-        print(colored(" You are using an older version of MeetNinja.", "red"))
-        print(colored("Get the latest version at https://github.com/SHUR1K-N/MeetNinja-Google-Meet-Bot", "yellow"))
-        print(colored("Every new version comes with fixes, improvements, new features, etc..", "yellow"))
-        print(colored("Please do not open an Issue if you see this message and have not yet tried the latest version.", "yellow"))
 
 
 ############### Main ###############
