@@ -20,9 +20,9 @@ This project was created in Python, for the fellow comrades and homies.
 - Automatically checks for a newer MeetNinja version upon every execution
 
 ## Usage
-1. Clone / Download this repository or its content (mainly **MeetNinja.py** and the **chromedriver / geckodriver** file for your web browser and OS)
+1. Clone this repository or download it as a ZIP file (and extract its contents)
 
-2. PIP-install all the packages mentioned under the [last subheading](https://github.com/SHUR1K-N/MeetNinja-Google-Meet-Bot#dependencies-to-pip-install "last subheading") on this page
+2. PIP-install all the packages mentioned under the [last subheading](https://github.com/SHUR1K-N/MeetNinja-Google-Meet-Bot#dependencies-to-pip-install "last subheading") on this page, either automatically via running the "pip install -r requirments.txt" command, or manually via separate "pip install" commands for each package
 
 3. Do not run MeetNinja.py just yet. First, open it using any editor, and substitute your inputs (Google Meet URLs, their start times, duration of all Meets, Google username, password, path to the web driver file of your respective browser and OS) into the dummy values in the following section of the code (highlighted):
 
