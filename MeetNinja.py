@@ -44,7 +44,7 @@ passwordNextButtonPath = "passwordNext"
 joinButtonPath = "//span[contains(text(), 'Join')]"
 endButtonPath = "[aria-label='Leave call']"
 
-currentVersionNumber = "v2.2.0"
+currentVersionNumber = "v2.2.1"
 VERSION_CHECK_URL = "https://raw.githubusercontent.com/SHUR1K-N/MeetNinja-Google-Meet-Bot/master/versionfile.txt"
 BANNER1 = colored('''
    ███▄ ▄███▓▓█████ ▓█████▄▄▄█████▓ ███▄    █  ██▓ ███▄    █  ▄▄▄██▀▀▀▄▄▄
@@ -178,14 +178,15 @@ def genericError():
     # clrscr()
     print(colored(" Failed!", "red"), end="")
     print("\n\nPossible fixes:\n")
-    print("1 Make sure you have downloaded the latest version of MeetNinja from the GitHub page (every new iteration brings fixes and new capabilities)")
+    print("1.1 Make sure you have downloaded the latest version of MeetNinja from the GitHub page (every new iteration brings fixes and new capabilities)")
+    print("1.2 Make sure you have pip-installed all the required python packages mentioned in the README")
     print("2.1 Check your inputs and run MeetNinja again (make sure there are no leading zeros in the Meet start times)")
     print("2.2 And / Or make sure you have chosen the correct webdriver file respective of your web browser and operating system")
     print("3. Make sure the generated web browser is not \"Minimized\" while MeetNinja is working")
     print("4.1. Make sure the webdriver file is of the latest stable build (https://chromedriver.chromium.org/ or https://github.com/mozilla/geckodriver/releases)")
     print("4.2. And / Or make sure your chosen web browser is updated to the latest version")
     print("4.3. And / Or make sure the webdriver file is at least of the same version as your chosen web browser (or lower)")
-    print("5. Make sure the small \"time.sleep()\" delays (in seconds) in the functions are comfortable for your internet speed")
+    print("5. Make sure the small \"time.sleep()\" delays (in seconds) in the login() and attendMeet() functions are comfortable for your internet speed")
     print("6. Make sure your internet connection is stable throughout the process")
     print("\nPress Enter to exit.")
     input()
