@@ -4,7 +4,7 @@
 A super dope tool that attends your Google Meet(s) for you on autopilot while you sleep or work on something else. MeetNinja flawlessly handles multiple Meet sessions, background activity, scheduling, and also disables your Meet camera & microphone in-Meet! It is also equipped with color-coded, concise activity logging (verbose) with timestamps of all joining & ending activities for each Meet session (to assure you—upon your return—that your Meets were *indeed* successfully attended). Supports Google Chrome and Mozilla Firefox.
 
 <div align="center">
-<img src="https://github.com/SHUR1K-N/MeetNinja-Google-Meet-Bot/blob/master/Images/Example.png" >
+<img src="https://raw.githubusercontent.com/SHUR1K-N/MeetNinja-Google-Meet-Bot/master/Images/Example.png" >
 <p>Example Execution</p>
 </div>
 
@@ -27,7 +27,7 @@ This project was created in Python, for the fellow comrades and homies.
 3. Do not run MeetNinja.py just yet. First, open it using any editor, and substitute your inputs (Google Meet URLs, their start times, duration of all Meets, Google username, password, path to the web driver file of your respective browser and OS) into the dummy values in the following section of the code (highlighted):
 
 <div align="center">
-<img src="https://github.com/SHUR1K-N/MeetNinja-Google-Meet-Bot/blob/master/Images/Substitute.png" >
+<img src="https://raw.githubusercontent.com/SHUR1K-N/MeetNinja-Google-Meet-Bot/master/Images/Substitute.png" >
 <p>Values to Substitute</p>
 </div>
 
