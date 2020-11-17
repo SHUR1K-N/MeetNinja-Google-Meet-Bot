@@ -41,10 +41,11 @@ usernameFieldPath = "identifierId"
 usernameNextButtonPath = "identifierNext"
 passwordFieldPath = "password"
 passwordNextButtonPath = "passwordNext"
-joinButtonPath = "//span[contains(text(), 'Join')]"
+joinButton1Path = "//span[contains(text(), 'Join')]"
+joinButton2Path = "//span[contains(text(), 'Ask to join')]"
 endButtonPath = "[aria-label='Leave call']"
 
-currentVersionNumber = "v2.2.1"
+currentVersionNumber = "v2.3.0"
 VERSION_CHECK_URL = "https://raw.githubusercontent.com/SHUR1K-N/MeetNinja-Google-Meet-Bot/master/versionfile.txt"
 BANNER1 = colored('''
    ███▄ ▄███▓▓█████ ▓█████▄▄▄█████▓ ███▄    █  ██▓ ███▄    █  ▄▄▄██▀▀▀▄▄▄
@@ -79,7 +80,7 @@ def versionCheck():
     currentVersionNumber = int(''.join(currentVersionNumber))
 
     if currentVersionNumber >= latestVersionNumber:
-        print(colored(" You are using the latest version!", "green"))
+        print(colored(" You are using the latest version!\n", "green"))
     elif currentVersionNumber < latestVersionNumber:
         print(colored(" You are using an older version of MeetNinja.", "red"))
         print(colored("Get the latest version at https://github.com/SHUR1K-N/MeetNinja-Google-Meet-Bot", "yellow"))
@@ -149,7 +150,10 @@ def attendMeet():
     print(colored(" Success!", "green"))
     print(f"Entering Google Meet #{meetIndex}...", end="")
 
-    joinButton = wait.until(when.element_to_be_clickable((by.XPATH, joinButtonPath)))
+    try:
+        joinButton = wait.until(when.element_to_be_clickable((by.XPATH, joinButton1Path)))
+    except:
+        joinButton = wait.until(when.element_to_be_clickable((by.XPATH, joinButton2Path)))
     if BROWSER_DRIVER.lower().startswith("chrome"):
         time.sleep(1)
         action.send_keys(Keys.ESCAPE).perform()
@@ -161,7 +165,7 @@ def attendMeet():
     print(colored(f"Now attending Google Meet #{meetIndex} @{timeStamp()}", "green"), end="")
 
     try:
-        joinButton = wait.until(when.element_to_be_clickable((by.XPATH, joinButtonPath)))   # For another prompt that pops up for Meets being recorded
+        joinButton = wait.until(when.element_to_be_clickable((by.XPATH, joinButton1Path)))   # For another prompt that pops up for Meets being recorded
         time.sleep(1)
         joinButton.click()
     except:
