@@ -1,7 +1,7 @@
 # MeetNinja: Google Meet Bot
 
 ## Description
-A super dope tool that attends your Google Meet(s) for you on autopilot while you sleep or work on something else. MeetNinja flawlessly handles multiple Meet sessions, background activity, scheduling, and also disables your Meet camera & microphone in-Meet! It is also equipped with color-coded, concise activity logging (verbose) with timestamps of all joining & ending activities for each Meet session (to assure you—upon your return—that your Meets were *indeed* successfully attended). Supports Google Chrome and Mozilla Firefox.
+A super dope tool that attends your Google Meet(s) for you on autopilot while you sleep or work on something else. MeetNinja flawlessly handles multiple Meet sessions, background activity, scheduling, and also disables your Meet camera & microphone in-Meet! It is also equipped with color-coded, concise activity logging (verbose) with timestamps of all joining & ending activities for each Meet session (to assure you—upon your return—that your Meets were *indeed* successfully attended). Supports Google Chrome and Mozilla Firefox, on Linux & Windows.
 
 <div align="center">
 <img src="https://raw.githubusercontent.com/SHUR1K-N/MeetNinja-Google-Meet-Bot/master/Images/Example.png" >
@@ -17,6 +17,7 @@ This project was created in Python, for the fellow comrades and homies.
 - Automatically disables camera & microphone in-Meet
 - Color-coded & concise activity logging (verbose) with timestamps of all activities
 - Supported web browsers: Google Chrome & Mozilla Firefox
+- Supported platforms: Linux & Windows
 - Automatically checks for a newer MeetNinja version upon every execution
 
 ## Usage
