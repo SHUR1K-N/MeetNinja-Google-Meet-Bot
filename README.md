@@ -1,7 +1,7 @@
 # MeetNinja: Google Meet Bot
 
 ## Description
-A super dope tool that attends your Google Meet(s) for you on autopilot while you sleep or work on something else. MeetNinja flawlessly handles multiple Meet sessions, background activity, scheduling, and also disables your Meet camera & microphone in-Meet! It is also equipped with color-coded, concise activity logging (verbose) with timestamps of all joining & ending activities for each Meet session (to assure you—upon your return—that your Meets were *indeed* successfully attended). Supports Google Chrome and Mozilla Firefox, on Linux & Windows.
+A super dope tool that attends your Google Meet(s) for you on autopilot while you sleep or work on something else. MeetNinja flawlessly handles multiple Meet sessions, background activity, scheduling, and also disables your Meet camera & microphone in-Meet! It is also equipped with color-coded, concise activity logging (verbose) with timestamps of all joining & ending activities for each Meet session (to assure you—upon your return—that your Meets were *indeed* successfully attended). Supports Google Chrome and Mozilla Firefox, on Linux, Mac & Windows.
 
 <div align="center">
 <img src="https://raw.githubusercontent.com/SHUR1K-N/MeetNinja-Google-Meet-Bot/master/Images/Example.png" >
@@ -11,19 +11,19 @@ A super dope tool that attends your Google Meet(s) for you on autopilot while yo
 This project was created in Python, for the fellow comrades and homies.
 
 ## Features
-- Mulitple Meet sessions supported, according to the user-defined Meet schedule
-- Works even with the display on sleep (and does not wake it up either)
+- Multiple Meet sessions supported, according to the user-defined Meet schedule
+- Works even with the display on sleep (and will not wake it up either)
 - Works even in the background while you do other work (as long as you do not *explicitly* "Minimize" the browser window MeetNinja generates; just keep it open in the background, beneath your current open window(s))
 - Automatically disables camera & microphone in-Meet
 - Color-coded & concise activity logging (verbose) with timestamps of all activities
 - Supported web browsers: Google Chrome & Mozilla Firefox
-- Supported platforms: Linux & Windows
+- Supported platforms: Linux, Mac & Windows
 - Automatically checks for a newer MeetNinja version upon every execution
 
 ## Usage
 1. Clone this repository or download it as a ZIP file (and extract its contents)
 
-2. PIP-install all the packages mentioned under the [last subheading](https://github.com/SHUR1K-N/MeetNinja-Google-Meet-Bot#dependencies-to-pip-install "last subheading") on this page, either automatically via running the "pip install -r requirments.txt" command, or manually via separate "pip install" commands for each package
+2. PIP-install all the packages mentioned under the [last subheading](https://github.com/SHUR1K-N/MeetNinja-Google-Meet-Bot#dependencies-to-pip-install "last subheading") on this page, either automatically via running the `pip install -r requirments.txt` command, or manually via separate `pip install` commands for each package
 
 3. Do not run MeetNinja.py just yet. First, open it using any editor, and substitute your inputs (Google Meet URLs, their start times, duration of all Meets, Google username, password, path to the web driver file of your respective browser and OS) into the dummy values in the following section of the code (highlighted):
 
@@ -56,6 +56,8 @@ You may also need or use the above remote desktop client(s) if you need to mid-s
 2. There is *deliberately* no Headless Mode (at the moment) due to potential complications arising from exiting MeetNinja while a Meet is still active (such as the Meet not relatively "naturally" ending and you being a part of the Meet unknowingly till the end of time)
 
 3. Although you may abort the process at any stage or time by pressing CTRL + C from within the MeetNinja console / terminal window, it is not advised to do so from within an active Meet (for reasons similar to the previous point)
+
+4. There is *deliberately* no audio output muting due to potential situations such as roll-calls or surprise questions for which you may need to intervene unexpectedly. Besides, you can either mute the tab manually if you are working on something else; or just entirely mute your system if you are planning on sleeping anyway
 
 ## Dependencies to PIP-Install
 - **selenium** (for web browser-based automation)
