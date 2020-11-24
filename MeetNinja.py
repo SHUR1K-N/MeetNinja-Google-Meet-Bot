@@ -12,12 +12,14 @@ import colorama; from termcolor import colored
 colorama.init()
 
 ###################################################################
-#                        Meets                  Y  M  D  H  m  s
-MEETS = {"1 https://meet.google.com/meetURL1": "2020 12 31 23 59 59",
-         "2 https://meet.google.com/meetURL2": "2020 12 31 23 59 59",
-         "3 https://meet.google.com/meetURL3": "2020 12 31 23 59 59",
+#                        Meets                  HH:MM:SS DD/MM/YYYY
+MEETS = {"1 https://meet.google.com/meetURL1": "23:59:59 31/12/2020",
+         "2 https://meet.google.com/meetURL2": "23:59:59 31/12/2020",
+         "3 https://meet.google.com/meetURL3": "23:59:59 31/12/2020",
+         "4 https://meet.google.com/meetURL4": "23:59:59 31/12/2020",
          # Add more Meet URLs (if any) using the same format as above
          }
+
 DURATION = 60 # Duration of each Meet in minutes
 USERNAME = "emailaddress@gmail.com"
 PASSWORD = "passw0rd"
@@ -45,7 +47,7 @@ joinButton1Path = "//span[contains(text(), 'Join')]"
 joinButton2Path = "//span[contains(text(), 'Ask to join')]"
 endButtonPath = "[aria-label='Leave call']"
 
-currentVersionNumber = "v2.3.0"
+currentVersionNumber = "v3.0.0"
 VERSION_CHECK_URL = "https://raw.githubusercontent.com/SHUR1K-N/MeetNinja-Google-Meet-Bot/master/versionfile.txt"
 BANNER1 = colored('''
    ███▄ ▄███▓▓█████ ▓█████▄▄▄█████▓ ███▄    █  ██▓ ███▄    █  ▄▄▄██▀▀▀▄▄▄
@@ -86,6 +88,14 @@ def versionCheck():
         print(colored("Get the latest version at https://github.com/SHUR1K-N/MeetNinja-Google-Meet-Bot", "yellow"))
         print(colored("Every new version comes with fixes, improvements, new features, etc..", "yellow"))
         print(colored("Please do not open an Issue if you see this message and have not yet tried the latest version.", "yellow"))
+
+
+def fixTimeFormat(rawTime):
+    rawTime = list(rawTime.split())
+    times = list(map(int, rawTime[0].split(":")))
+    dates = list(map(int, reversed(rawTime[1].split("/"))))
+    startTime = dates + times
+    return startTime
 
 
 def timeStamp():
@@ -227,12 +237,12 @@ if __name__ == "__main__":
         driver = initBrowser()
         wait = webdriver.support.ui.WebDriverWait(driver, 5)
         action = ActionChains(driver)
-        for meetIndex, (URL, startTime) in enumerate(MEETS.items(), start=1):
-            startTime = list(map(int, startTime.split()))
+        for meetIndex, (URL, rawTime) in enumerate(MEETS.items(), start=1):
+            startTime = fixTimeFormat(rawTime)
             if (meetIndex <= 1):
-                print(colored(f"Waiting until first Meet start time [{startTime[-3]:02}:{startTime[-2]:02}:{startTime[-1]:02}]...", "yellow"), end="")
+                print(colored(f"Waiting until first Meet start time [{rawTime}]...", "yellow"), end="")
             else:
-                print(colored(f"\n\nWaiting until next Meet start time [{startTime[-3]:02}:{startTime[-2]:02}:{startTime[-1]:02}]...", "yellow"), end="")
+                print(colored(f"\n\nWaiting until next Meet start time [{rawTime}]...", "yellow"), end="")
             pause.until(datetime(*startTime))
             print(colored(" Started!", "green"))
             if (meetIndex <= 1):
