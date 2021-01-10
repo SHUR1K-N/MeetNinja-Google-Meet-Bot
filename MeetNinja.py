@@ -85,7 +85,7 @@ def versionCheck():
         print(colored(" You are using the latest version!\n", "green"))
     elif currentVersionNumber < latestVersionNumber:
         print(colored(" You are using an older version of MeetNinja.", "red"))
-        print(colored("Get the latest version at https://github.com/SHUR1K-N/MeetNinja-Google-Meet-Bot", "yellow"))
+        print(colored("\nGet the latest version at https://github.com/SHUR1K-N/MeetNinja-Google-Meet-Bot", "yellow"))
         print(colored("Every new version comes with fixes, improvements, new features, etc..", "yellow"))
         print(colored("Please do not open an Issue if you see this message and have not yet tried the latest version.", "yellow"))
 
