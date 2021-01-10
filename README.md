@@ -69,4 +69,4 @@ You may also need or use the above remote desktop client(s) if you need to mid-s
 
 ------------
 
-My website: http://bit.do/SHUR1KN
+My website: https://TheComputerNoob.com
