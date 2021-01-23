@@ -5,6 +5,7 @@ from selenium.webdriver.support import expected_conditions as when
 from selenium.webdriver.common.by import By as by
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.firefox.service import Service
 import pause; import os; import re
 import time; from datetime import datetime
 import colorama; from termcolor import colored
@@ -28,6 +29,7 @@ BROWSER_DRIVER = "Browser Driver Path Goes Here (options below)"
 #                   Google Chrome
 #           Linux: "ChromeDrivers/linux64/chromedriver"
 #             Mac: "ChromeDrivers/mac64/chromedriver"
+#        Mac (M1): "ChromeDrivers/mac64_m1/chromedriver"
 #         Windows: "ChromeDrivers/win32/chromedriver.exe"
 
 #                   Mozilla Firefox
@@ -36,7 +38,7 @@ BROWSER_DRIVER = "Browser Driver Path Goes Here (options below)"
 #             Mac: "FirefoxDrivers/mac64/geckodriver"
 #   Windows (x32): "FirefoxDrivers/win32/geckodriver.exe"
 #   Windows (x64): "FirefoxDrivers/win64/geckodriver.exe"
-###################################################################
+##################################################################
 
 # All required interactive elements' locators (text fields, buttons, etc.)
 usernameFieldPath = "identifierId"
@@ -47,7 +49,7 @@ joinButton1Path = "//span[contains(text(), 'Join')]"
 joinButton2Path = "//span[contains(text(), 'Ask to join')]"
 endButtonPath = "[aria-label='Leave call']"
 
-currentVersionNumber = "v3.0.0"
+currentVersionNumber = "v3.1.0"
 VERSION_CHECK_URL = "https://raw.githubusercontent.com/SHUR1K-N/MeetNinja-Google-Meet-Bot/master/versionfile.txt"
 BANNER1 = colored('''
    ███▄ ▄███▓▓█████ ▓█████▄▄▄█████▓ ███▄    █  ██▓ ███▄    █  ▄▄▄██▀▀▀▄▄▄
@@ -118,7 +120,11 @@ def initBrowser():
                                                         "profile.default_content_setting_values.media_stream_camera": 2,
                                                         "profile.default_content_setting_values.notifications": 2
                                                         })
-        driver = webdriver.Chrome(executable_path=BROWSER_DRIVER, options=chromeOptions)
+        if BROWSER_DRIVER.lower().endswith(".exe"):
+            driver = webdriver.Chrome(executable_path=BROWSER_DRIVER, options=chromeOptions)
+        else:
+            serv = Service(BROWSER_DRIVER)
+            driver = webdriver.Chrome(service=serv, options=chromeOptions)
 
     elif BROWSER_DRIVER.lower().startswith("firefox"):
         firefoxOptions = webdriver.FirefoxOptions()
@@ -128,7 +134,11 @@ def initBrowser():
         firefoxOptions.set_preference("browser.privatebrowsing.autostart", True)
         firefoxOptions.set_preference("permissions.default.microphone", 2)
         firefoxOptions.set_preference("permissions.default.camera", 2)
-        driver = webdriver.Firefox(executable_path=BROWSER_DRIVER, options=firefoxOptions)
+        if BROWSER_DRIVER.lower().endswith(".exe"):
+            driver = webdriver.Firefox(executable_path=BROWSER_DRIVER, options=firefoxOptions)
+        else:
+            serv = Service(BROWSER_DRIVER)
+            driver = webdriver.Firefox(service=serv, options=firefoxOptions)
     print(colored(" Success!", "green"))
     return(driver)
 
@@ -235,7 +245,7 @@ if __name__ == "__main__":
     try:
         DURATION *= 60
         driver = initBrowser()
-        wait = webdriver.support.ui.WebDriverWait(driver, 5)
+        wait = webdriver.support.ui.WebDriverWait(driver, 7)
         action = ActionChains(driver)
         for meetIndex, (URL, rawTime) in enumerate(MEETS.items(), start=1):
             startTime = fixTimeFormat(rawTime)
