@@ -1,11 +1,10 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from selenium import webdriver; import requests
 from selenium.webdriver.support import expected_conditions as when
 from selenium.webdriver.common.by import By as by
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.firefox.service import Service
 import pause; import os; import re
 import time; from datetime import datetime
 import colorama; from termcolor import colored
@@ -49,7 +48,7 @@ joinButton1Path = "//span[contains(text(), 'Join')]"
 joinButton2Path = "//span[contains(text(), 'Ask to join')]"
 endButtonPath = "[aria-label='Leave call']"
 
-currentVersionNumber = "v3.1.0"
+currentVersionNumber = "v3.1.1"
 VERSION_CHECK_URL = "https://raw.githubusercontent.com/SHUR1K-N/MeetNinja-Google-Meet-Bot/master/versionfile.txt"
 BANNER1 = colored('''
    ███▄ ▄███▓▓█████ ▓█████▄▄▄█████▓ ███▄    █  ██▓ ███▄    █  ▄▄▄██▀▀▀▄▄▄
@@ -120,11 +119,7 @@ def initBrowser():
                                                         "profile.default_content_setting_values.media_stream_camera": 2,
                                                         "profile.default_content_setting_values.notifications": 2
                                                         })
-        if BROWSER_DRIVER.lower().endswith(".exe"):
-            driver = webdriver.Chrome(executable_path=BROWSER_DRIVER, options=chromeOptions)
-        else:
-            serv = Service(BROWSER_DRIVER)
-            driver = webdriver.Chrome(service=serv, options=chromeOptions)
+        driver = webdriver.Chrome(executable_path=BROWSER_DRIVER, options=chromeOptions)
 
     elif BROWSER_DRIVER.lower().startswith("firefox"):
         firefoxOptions = webdriver.FirefoxOptions()
@@ -134,11 +129,7 @@ def initBrowser():
         firefoxOptions.set_preference("browser.privatebrowsing.autostart", True)
         firefoxOptions.set_preference("permissions.default.microphone", 2)
         firefoxOptions.set_preference("permissions.default.camera", 2)
-        if BROWSER_DRIVER.lower().endswith(".exe"):
-            driver = webdriver.Firefox(executable_path=BROWSER_DRIVER, options=firefoxOptions)
-        else:
-            serv = Service(BROWSER_DRIVER)
-            driver = webdriver.Firefox(service=serv, options=firefoxOptions)
+        driver = webdriver.Firefox(executable_path=BROWSER_DRIVER, options=firefoxOptions)
     print(colored(" Success!", "green"))
     return(driver)
 
