@@ -195,6 +195,7 @@ def genericError():
     print("\n\nPossible fixes:\n")
     print("1.1 Make sure you have downloaded the latest version of MeetNinja from the GitHub page (every new iteration brings fixes and new capabilities)")
     print("1.2 Make sure you have pip-installed all the required python packages mentioned in the README")
+    print("1.3 UNIX-based systems (Linux / Mac): Make sure you have given all the contents of MeetNinja the correct permissions (eg: 'chmod 777 ./ -R')")
     print("2.1 Check your inputs and run MeetNinja again (make sure there are no leading zeros in the Meet start times)")
     print("2.2 And / Or make sure you have chosen the correct webdriver file respective of your web browser and operating system")
     print("3. Make sure the generated web browser is not \"Minimized\" while MeetNinja is working")
