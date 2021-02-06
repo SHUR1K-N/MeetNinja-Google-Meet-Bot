@@ -4,6 +4,7 @@ from selenium import webdriver; import requests
 from selenium.webdriver.support import expected_conditions as when
 from selenium.webdriver.common.by import By as by
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.common.keys import Keys
 import pause; import os; import re
 import time; from datetime import datetime
@@ -119,7 +120,11 @@ def initBrowser():
                                                         "profile.default_content_setting_values.media_stream_camera": 2,
                                                         "profile.default_content_setting_values.notifications": 2
                                                         })
-        driver = webdriver.Chrome(executable_path=BROWSER_DRIVER, options=chromeOptions)
+        if BROWSER_DRIVER.lower().endswith(".exe"):
+            driver = webdriver.Chrome(executable_path=BROWSER_DRIVER, options=chromeOptions)
+        else:
+            servicePath = Service(BROWSER_DRIVER)
+            driver = webdriver.Chrome(service=servicePath, options=chromeOptions)
 
     elif BROWSER_DRIVER.lower().startswith("firefox"):
         firefoxOptions = webdriver.FirefoxOptions()
@@ -129,7 +134,11 @@ def initBrowser():
         firefoxOptions.set_preference("browser.privatebrowsing.autostart", True)
         firefoxOptions.set_preference("permissions.default.microphone", 2)
         firefoxOptions.set_preference("permissions.default.camera", 2)
-        driver = webdriver.Firefox(executable_path=BROWSER_DRIVER, options=firefoxOptions)
+        if BROWSER_DRIVER.lower().endswith(".exe"):
+            driver = webdriver.Firefox(executable_path=BROWSER_DRIVER, options=firefoxOptions)
+        else:
+            servicePath = Service(BROWSER_DRIVER)
+            driver = webdriver.Firefox(service=servicePath, options=firefoxOptions)
     print(colored(" Success!", "green"))
     return(driver)
 
