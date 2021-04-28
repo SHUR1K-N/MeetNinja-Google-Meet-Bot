@@ -1,7 +1,7 @@
 # MeetNinja: Google Meet Bot
 
 ## Description
-A super dope tool that attends your Google Meet(s) for you on autopilot while you sleep or work on something else. MeetNinja flawlessly handles multiple Meet sessions, background activity, scheduling, and also disables your Meet camera & microphone in-Meet! It is also equipped with color-coded, concise activity logging (verbose) with timestamps of all joining & ending activities for each Meet session (to assure you—upon your return—that your Meets were *indeed* successfully attended). Supports Google Chrome and Mozilla Firefox, on Linux, Mac & Windows.
+A super dope tool that attends your Google Meet(s) for you on autopilot while you sleep or work on something else. MeetNinja flawlessly handles multiple Meet sessions, background activity, scheduling, and also disables your Meet camera and microphone in-Meet! It is also equipped with color-coded, concise activity logging (verbose) with timestamps of all joining and ending activities for each Meet session (to assure you—upon your return—that your Meets were *indeed* successfully attended). Supports Google Chrome and Mozilla Firefox, on Linux, Mac, and Windows.
 
 <div align="center">
 <img src="https://raw.githubusercontent.com/SHUR1K-N/MeetNinja-Google-Meet-Bot/master/Images/Example.png" >
@@ -14,10 +14,10 @@ This project was created in Python, for the fellow comrades and homies.
 - Multiple Meet sessions supported, according to the user-defined Meet schedule
 - Works even with the display on sleep (and will not wake it up either)
 - Works even in the background while you do other work (as long as you do not *explicitly* "Minimize" the browser window MeetNinja generates; just keep it open in the background, beneath your current open window(s))
-- Automatically disables camera & microphone in-Meet
-- Color-coded & concise activity logging (verbose) with timestamps of all activities
-- Supported web browsers: Google Chrome & Mozilla Firefox
-- Supported platforms: Linux, Mac & Windows
+- Automatically disables camera and microphone in-Meet
+- Color-coded and concise activity logging (verbose) with timestamps of all activities
+- Supported web browsers: Google Chrome and Mozilla Firefox
+- Supported platforms: Linux, Mac, and Windows
 - Automatically checks for a newer MeetNinja version upon every execution
 
 ## Usage
@@ -37,7 +37,7 @@ This project was created in Python, for the fellow comrades and homies.
 5. Take the chillest of pills (figuratively) and abandon all your worries; MeetNinja's got your back
 
 ### What MeetNinja Does
-Upon execution, MeetNinja generates a new Google Chrome / Mozilla Firefox window in Developer Mode, and this new window stays idle until it is time to join your first Meet (according to your schedule). Once it is time, MeetNinja automatically logs you into your Google account, navigates to the first Meet URL, disables your camera & microphone, joins the Meet session, and then waits until the duration specified (60 minutes by default) before ending the call and repeating the same for the *next* Meet session (whenever it may be) and so on, until your schedule has exhausted *(phew)* — all this with just a single (double) click!
+Upon execution, MeetNinja generates a new Google Chrome / Mozilla Firefox window in Developer Mode, and this new window stays idle until it is time to join your first Meet (according to your schedule). Once it is time, MeetNinja automatically logs you into your Google account, navigates to the first Meet URL, disables your camera and microphone, joins the Meet session, and then waits until the duration specified (60 minutes by default) before ending the call and repeating the same for the *next* Meet session (whenever it may be) and so on, until your schedule has exhausted *(phew)* — all this with just a single (double) click!
 
 ## Tip(s) for CyberJedi-like Usage
 ### Wake-on-LAN
